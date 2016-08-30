@@ -15,7 +15,7 @@ namespace ConsoleNameProgram
             Console.WriteLine("What´s your last name?");
             string lastName = Console.ReadLine();
 
-            Console.WriteLine("Hello " + firstName + " " + lastName + "!");
+            Console.WriteLine("Hello " + lastName + "!");
         }
     }
 }
