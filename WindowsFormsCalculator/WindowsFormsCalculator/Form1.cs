@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsCalculator
 {
-    public partial class Form1 : Form
+    public partial class Calculator : Form
     {
         string ope = "";
 
-        public Form1()
+        public Calculator()
         {
             InitializeComponent();
             textBox1.Focus();
@@ -24,23 +24,21 @@ namespace WindowsFormsCalculator
             ButtonSplit.Text = "/";
             ButtonCalc.Text = "Calculate";
             listBox1.Text = "";
+            int test = GetNumber();
         }
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
             ope = "+";
         }
-
         private void ButtonMinus_Click(object sender, EventArgs e)
         {
             ope = "-";
         }
-
         private void ButtonTimes_Click(object sender, EventArgs e)
         {   
             ope = "x";
         }
-
         private void ButtonSplit_Click(object sender, EventArgs e)
         {   
             ope = "/";
@@ -50,7 +48,6 @@ namespace WindowsFormsCalculator
         {
             
         }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             
@@ -58,8 +55,11 @@ namespace WindowsFormsCalculator
 
         private void ButtonCalc_Click(object sender, EventArgs e)
         {
+
             int number1 = int.Parse(textBox1.Text);
             int number2 = int.Parse(textBox2.Text);
+
+            string error = "Mathematically impossible.";
             int answer;
 
             switch (ope)
@@ -78,6 +78,14 @@ namespace WindowsFormsCalculator
                     listBox1.Items.Add(answer);
                     break;
                 case "/":
+
+                    if (number2 == 0)
+                    {
+                        listBox1.Items.Add(error);
+                        MessageBox.Show("Can´t divide " + number1 + " with 0.", "Alert");
+                        break;
+                    } 
+
                     answer = number1 / number2;
                     listBox1.Items.Add(answer);
                     break;
@@ -85,11 +93,17 @@ namespace WindowsFormsCalculator
                 default:
                     break;
             }
+
+            textBox1.Text = string.Empty;
+            textBox2.Text = string.Empty;
+            textBox1.Focus();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
     }
+
 }
