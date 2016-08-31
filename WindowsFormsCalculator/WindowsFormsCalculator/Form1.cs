@@ -12,44 +12,84 @@ namespace WindowsFormsCalculator
 {
     public partial class Form1 : Form
     {
+        string ope = "";
+
         public Form1()
         {
             InitializeComponent();
+            textBox1.Focus();
+            ButtonAdd.Text = "+";
+            ButtonMinus.Text = "-";
+            ButtonTimes.Text = "x";
+            ButtonSplit.Text = "/";
+            ButtonCalc.Text = "Calculate";
+            listBox1.Text = "";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            button1.Text = "+";
+            ope = "+";
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ButtonMinus_Click(object sender, EventArgs e)
         {
-            button2.Text = "-";
+            ope = "-";
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            button3.Text = "x";
+        private void ButtonTimes_Click(object sender, EventArgs e)
+        {   
+            ope = "x";
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            button4.Text = "/";
+        private void ButtonSplit_Click(object sender, EventArgs e)
+        {   
+            ope = "/";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void ButtonCalc_Click(object sender, EventArgs e)
         {
-            button5.Text = "Calculate";
+            int number1 = int.Parse(textBox1.Text);
+            int number2 = int.Parse(textBox2.Text);
+            int answer;
+
+            switch (ope)
+            {
+                case "+":
+                    answer = number1 + number2;
+                    listBox1.Items.Add(answer);
+                    break;
+                case "-":
+                    answer = number1 - number2;
+                    listBox1.Items.Add(answer);
+                    break;
+
+                case "x":
+                    answer = number1 * number2;
+                    listBox1.Items.Add(answer);
+                    break;
+                case "/":
+                    answer = number1 / number2;
+                    listBox1.Items.Add(answer);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
