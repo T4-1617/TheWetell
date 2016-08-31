@@ -10,10 +10,14 @@ namespace DemoAug310816
     {
         static void Main(string[] args)
         {
+
+            int number1;
+            int number2;
+
             Console.WriteLine("Enter a positive number:");
-            int number1 = int.Parse(Console.ReadLine());
+            number1 = GetValidNum();
             Console.WriteLine("Enter another positive number:");
-            int number2 = int.Parse(Console.ReadLine());
+            number2 = GetValidNum();
             Console.WriteLine("Enter an operator:");
             string ope = Console.ReadLine();
 
@@ -44,5 +48,18 @@ namespace DemoAug310816
                     break;
             }
         }
+
+        private static int GetValidNum()
+        {
+            int num;
+            bool isnum = int.TryParse(Console.ReadLine(), out num);
+            if(isnum && num >= 0)
+            {
+                return num;
+            }
+            Console.WriteLine("Enter a valid number:");
+            return GetValidNum();
+        }
+        
     }
 } 
