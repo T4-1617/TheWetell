@@ -43,8 +43,59 @@ namespace ConsoleNameProgram_310916
                 Console.WriteLine("------>" + item);
             }
 
+            string lowercaseNames = name.ToLower();
+            Console.WriteLine(ReverseNames(lowercaseNames));
 
+            Console.WriteLine(UpperLowerCase(name));
 
+            Console.WriteLine(LeetSpeech(name));
+
+        }
+
+        private static string ReverseNames (string str)
+        {
+            char[] reverseNames = str.ToCharArray();
+            Array.Reverse(reverseNames);
+            return new string(reverseNames);
+        }
+
+        private static string UpperLowerCase (string str)
+        {
+            char[] upperLowerCase = str.ToCharArray();
+            for (int i = 0; i < upperLowerCase.Count(); i++)
+            {
+                if (i % 2 == 0)
+                {
+                    upperLowerCase[i] = char.ToUpper(upperLowerCase[i]);
+                }
+            }
+
+            return new string(upperLowerCase);
+        }
+
+        private static string LeetSpeech(string str)
+        {
+            char[] leetSpeech = str.ToCharArray();
+            for (int i = 0; i < leetSpeech.Count(); i++)
+            {
+                switch (char.ToLower(leetSpeech[i]))
+                {
+                    case 'a':
+                        leetSpeech[i] = '4';
+                        break;
+                    case 'e':
+                        leetSpeech[i] = '3';
+                        break;
+                    case 'l':
+                        leetSpeech[i] = '1';
+                        break;
+                    case 't':
+                        leetSpeech[i] = '7';
+                        break;
+                }
+            }
+            return new string (leetSpeech);
         }
     }
 }
+
