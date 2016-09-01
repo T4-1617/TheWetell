@@ -12,8 +12,8 @@ namespace ConsoleNameProgram
         static void Main( string[] args)
         {
 
-            string firstName = "";
-            string lastName = "";
+            string firstName;
+            string lastName;
 
             Console.WriteLine("What´s your first name?");
             firstName = ReadName();
