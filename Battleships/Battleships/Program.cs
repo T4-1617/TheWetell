@@ -11,13 +11,13 @@ namespace Battleships
         static void Main(string[] args)
         {
             string map = string.Empty;
-            Console.WriteLine(CreateGameMap());
+            CreateGameMap();
 
 
 
         }
 
-        private static string CreateGameMap()
+        private static void CreateGameMap()
         {
             bool[,] gameMap = new bool[7, 5];
 
@@ -47,7 +47,6 @@ namespace Battleships
                 Console.WriteLine();
 
             }
-            return draw;
 
         }
 
