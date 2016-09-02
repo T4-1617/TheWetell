@@ -10,12 +10,19 @@ namespace Battleships
     {
         static void Main(string[] args)
         {
+            //Keeps count of boats
             int boats = r.Next(3, 6);
+            //Keeps count of total shots fired
             int shotsFired = 0;
+
+            //Creates gamemap
             CreateGameMap();
+            //Places boats on map
             PlaceBoats(boats);
+            //Draws the gamemap in the console
             DrawGameMap();
 
+            //While loop for shooting at the map
             while (boats > 0)
             {
                 if (ShootRandomly(r.Next(0,7), r.Next(0,5)))
@@ -27,10 +34,12 @@ namespace Battleships
             Console.WriteLine(shotsFired);
         }
 
+        //The gamemap
         static bool[,] gameMap = new bool[7, 5];
+        //Randomizer
         static Random r = new Random();
 
-
+        //Creates the gamemap
         private static void CreateGameMap()
         {
 
@@ -42,7 +51,7 @@ namespace Battleships
                 }
             }
         }
-
+        //Creates boats
         private static void PlaceBoats(int boatsToPlace)
         {
 
@@ -59,7 +68,7 @@ namespace Battleships
                 }
             }
         }
-
+        //Draw gamemap
         private static void DrawGameMap()
         {
             string draw = string.Empty;
@@ -80,7 +89,7 @@ namespace Battleships
                 Console.WriteLine();
             }
         }
-
+        //Shoots boats at random places
         private static bool ShootRandomly(int x, int y)
         {
             if (gameMap[x, y])
