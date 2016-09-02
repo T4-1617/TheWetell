@@ -110,4 +110,3 @@ namespace ConsoleNameProgram_310916
         }
     }
 }
-
