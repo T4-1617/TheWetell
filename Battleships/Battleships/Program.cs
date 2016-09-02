@@ -11,17 +11,26 @@ namespace Battleships
         static void Main(string[] args)
         {
             int boats = r.Next(3, 6);
-
+            int shotsFired = 0;
             CreateGameMap();
             PlaceBoats(boats);
             DrawGameMap();
 
+            while (boats > 0)
+            {
+                if (ShootRandomly(r.Next(0,7), r.Next(0,5)))
+                {
+                    boats--;
+                }
+                shotsFired++;
+            }
+            Console.WriteLine(shotsFired);
         }
 
         static bool[,] gameMap = new bool[7, 5];
         static Random r = new Random();
 
-        //Creates the gamemap
+
         private static void CreateGameMap()
         {
 
@@ -33,7 +42,7 @@ namespace Battleships
                 }
             }
         }
-        //Creates boats
+
         private static void PlaceBoats(int boatsToPlace)
         {
 
@@ -50,7 +59,7 @@ namespace Battleships
                 }
             }
         }
-        //Draw gamemap
+
         private static void DrawGameMap()
         {
             string draw = string.Empty;
@@ -72,5 +81,14 @@ namespace Battleships
             }
         }
 
+        private static bool ShootRandomly(int x, int y)
+        {
+            if (gameMap[x, y])
+            {
+                gameMap[x, y] = false;
+                return true;
+            }
+            return false;
+        }
     }
 }
