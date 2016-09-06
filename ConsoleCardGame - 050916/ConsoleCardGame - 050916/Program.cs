@@ -8,89 +8,93 @@ namespace ConsoleCardGame___050916
 {
     class Program
     {
+        // Deck to hold cards
+        static List<Card> deck = new List<Card>();
+        static Random r = new Random();
+        static int score;
+
         static void Main(string[] args)
         {
-
-            int cards = 52;
-
-            CreateCards();
-            RandomizeCards(cards);
-            PrintCard();
-        }
-
-        static bool[,] deck = new bool[4, 13];
-        static List<bool[,]> RandomizedDeck = new List<bool[,]>();
-        static Random r = new Random();
-
-        private static string CreateCards()
-        {
-            for (int value = 0; value < 4; value++)
+            CreateDeck();
+            Console.WriteLine("Press ENTER for a card:");
+            while (deck.Count > 0)
             {
-                for (int number = 0; number < 13; number++)
+                Console.ReadLine();
+                Card card = PickCard();
+                string number = GetNumberString(card.number);
+                string colour = GetColour(card.value);
+                Console.WriteLine("You drew the {0} of {1}!", number, colour);
+                score += card.number;
+                Console.WriteLine("Score: {0}", score);
+                Console.WriteLine("Cards left: {0}", deck.Count);
+            }
+        }
+        // Puts cards in the deck
+        private static void CreateDeck()
+        {
+            for (int color = 0; color < 4; color++)
+            {
+                for (int num = 1; num < 14; num++)
                 {
-                    deck[value, number] = false;
+                    deck.Add(new Card(color, num));
                 }
             }
         }
-
-        private static 
-
-        /*
-        private static  RandomizeCards(int cardsToRandomize)
+        // Merhod that picks out a card from the deck 
+        private static Card PickCard()
         {
-            //int maxCards = 52;
-            //while (maxCards > cardsToRandomize)
-            while(true)
-            {
-                int value = r.Next(0, 4);
-                int number = r.Next(0, 13);
-
-                if (deck[value, number] == false)
-                {
-                    deck[value, number] = true;
-                    return 
-                    //maxCards++;
-                }
-            }
+            int pos = r.Next(0, deck.Count);
+            Card pickedCard = deck[pos];
+            deck.RemoveAt(pos);
+            return pickedCard;
         }
-        /*
-
-        private static string PrintCard(int value, int number)
+        // Gets the value from the card and sets its proper colour
+        private static string GetColour(int value)
         {
-            string colour = string.Empty;
             switch (value)
             {
                 case 0:
-                    colour = "Spades";
-                    break;
+                    return "Heart";
                 case 1:
-                    colour = "Clubs";
-                    break;
+                    return "Spades";
                 case 2:
-                    colour = "Hearts";
-                    break;
+                    return "Clubs";
                 case 3:
-                    colour = "Diamonds";
-                    break;
-
+                    return "Diamonds";
                 default:
-                    break;
+                    return string.Empty;
             }
-            return string.Format("You drew the {0} of {1}", number, colour);
         }
-
-        /*
-        private static string NameCards(int value)
+        // Gets the number from a card and sets its proper value, for example 11 = "Jack"
+        private static string GetNumberString(int number)
         {
-            switch (value)
+            switch (number)
             {
-                case 0:
-                    Console.WriteLine();
-                    break;
+                case 1:
+                    return "Ace";
+                case 11:
+                    return "Jack";
+                case 12:
+                    return "Queen";
+                case 13:
+                    return "King";
                 default:
+                    return number.ToString();
                     break;
             }
         }
-        */
+        // Creates card
+        class Card
+        {
+            public int value;
+            public int number;
+
+            public Card(int colour, int num)
+            {
+                value = colour;
+                number = num;
+            }
+        }
+
     }
 }
