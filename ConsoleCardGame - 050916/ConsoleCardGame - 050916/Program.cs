@@ -29,6 +29,7 @@ namespace ConsoleCardGame___050916
                 Console.WriteLine("Cards left: {0}", deck.Count);
             }
         }
+
         // Puts cards in the deck
         private static void CreateDeck()
         {
