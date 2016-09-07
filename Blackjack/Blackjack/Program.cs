@@ -21,31 +21,48 @@ namespace Blackjack
             while (shoe.Count() > 0)
             {
                 Console.WriteLine("Draw a card? (y/n)");
-                string answer = Console.ReadLine();
-                if (answer == "y")
+                string answer = "y";
+
+                switch (answer)
                 {
-                    Card card = PickCard();
-                
-                    string colour = SetColour(card.colour);
-                    string number = SetValue(card.number);
-                    Console.WriteLine("You drew the {0} of {1}", number, colour);
-                    score += card.number;
-                    Console.WriteLine("Your score is {0}", score);
-                    if (score == 21)
-                    {
-                        Console.WriteLine("You won!");
+                    case "y":
+                        Card card = PickCard();
+
+                        string colour = SetColour(card.colour);
+                        string number = SetValue(card.number);
+                        Console.WriteLine("You drew the {0} of {1}", number, colour);
+                        if (card.number > 10)
+                        {
+                            card.number = 10;
+                        }
+                        if (card.number == 1)
+                        {
+                            if (score < 11)
+                            {
+                                card.number = 10;
+                            }
+                        }
+                        score += card.number;
+                        Console.WriteLine("Your score is {0}", score);
+
+                        if (score == 21)
+                        {
+                            Console.WriteLine("You won!");
+                            return;
+                        }
+                        else if (score > 21)
+                        {
+                            Console.WriteLine("You lost.");
+                            score = 0;
+                        }
                         break;
-                    }
-                    else if (score > 21)
-                    {
-                        Console.WriteLine("You lost.");
+                    case "n":
+                        Console.WriteLine("Your score: {0}", score);
                         score = 0;
-                    }
-                }
-                else if (answer == "n")
-                {
-                    Console.WriteLine("Your score: {0}", score);
-                    score = 0;
+                        break;
+
+                    default:
+                        break;
                 }
 
                 if (shoe.Count == 0)
@@ -55,8 +72,8 @@ namespace Blackjack
                 }
                 Console.WriteLine("Cards left: {0}\n", shoe.Count);
             }
-        }
 
+        }
         // Creates deck, and adds all the cards twice to the list "deck"
         private static void CreatingShoe()
         {
@@ -77,7 +94,6 @@ namespace Blackjack
             shoe.RemoveAt(deckPosition);
             return pickCard;
         }
-
         // Sets colours to strings with the colourname 
         private static string SetColour(int colour)
         {
@@ -112,7 +128,6 @@ namespace Blackjack
                     return number.ToString();
             }
         }
-
         // Templete for creating individual cards
         class Card
         {
