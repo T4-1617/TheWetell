@@ -19,6 +19,7 @@ namespace ConsoleCardGame___050916
             Console.WriteLine("Press ENTER for a card:");
             while (deck.Count > 0)
             {
+
                 Console.ReadLine();
                 Card card = PickCard();
                 string number = GetNumberString(card.number);
@@ -33,11 +34,11 @@ namespace ConsoleCardGame___050916
         // Puts cards in the deck
         private static void CreateDeck()
         {
-            for (int color = 0; color < 4; color++)
+            for (int colour = 0; colour < 4; colour++)
             {
                 for (int num = 1; num < 14; num++)
                 {
-                    deck.Add(new Card(color, num));
+                    deck.Add(new Card(colour, num));
                 }
             }
         }
@@ -81,7 +82,6 @@ namespace ConsoleCardGame___050916
                     return "King";
                 default:
                     return number.ToString();
-                    break;
             }
         }
         // Creates card
