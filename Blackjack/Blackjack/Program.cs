@@ -15,6 +15,19 @@ namespace Blackjack
 
         }
 
+        // Creates deck, and adds all the cards twice to the list "deck"
+        private static void CreatingLargeDeck()
+        {
+            for (int colour = 0; colour < 4; colour++)
+            {
+                for (int number = 1; number < 14; number++)
+                {
+                    doubleDeck.Add(new Card(colour, number));
+                    doubleDeck.Add(new Card(colour, number));
+                }
+            }
+        }
+
         // Templete for creating individual cards
         class Card
         {
