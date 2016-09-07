@@ -9,6 +9,7 @@ namespace Blackjack
     class Program
     {
         static List<Card> doubleDeck = new List<Card>();
+        static Random r = new Random();
 
         static void Main(string[] args)
         {
@@ -26,6 +27,15 @@ namespace Blackjack
                     doubleDeck.Add(new Card(colour, number));
                 }
             }
+        }
+
+        // Picks a random card from the large deck
+        private static Card PickCardLargeDeck()
+        {
+            int deckPosition = r.Next(0, doubleDeck.Count());
+            Card pickedCard = doubleDeck[deckPosition];
+            doubleDeck.RemoveAt(deckPosition);
+            return pickedCard;
         }
 
         // Templete for creating individual cards
