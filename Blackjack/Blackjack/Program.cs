@@ -20,14 +20,14 @@ namespace Blackjack
             Console.ReadLine();
             while (shoe.Count() > 0)
             {
-                Card card = PickCard();
-                
-                string colour = SetColour(card.colour);
-                string number = SetValue(card.number);
                 Console.WriteLine("Draw a card? (y/n)");
                 string answer = Console.ReadLine();
                 if (answer == "y")
                 {
+                    Card card = PickCard();
+                
+                    string colour = SetColour(card.colour);
+                    string number = SetValue(card.number);
                     Console.WriteLine("You drew the {0} of {1}", number, colour);
                     score += card.number;
                     Console.WriteLine("Your score is {0}", score);
