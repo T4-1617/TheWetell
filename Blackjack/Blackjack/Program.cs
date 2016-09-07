@@ -28,7 +28,6 @@ namespace Blackjack
                 }
             }
         }
-
         // Picks a random card from the large deck
         private static Card PickCardLargeDeck()
         {
@@ -36,6 +35,41 @@ namespace Blackjack
             Card pickedCard = doubleDeck[deckPosition];
             doubleDeck.RemoveAt(deckPosition);
             return pickedCard;
+        }
+
+        // Sets colours to strings with the colourname 
+        private static string SetColour(int colour)
+        {
+            switch (colour)
+            {
+                case 0:
+                    return "Diamonds";
+                case 1:
+                    return "Spades";
+                case 2:
+                    return "Clubs";
+                case 3:
+                    return "Hearts";
+                default:
+                    return null;
+            }
+        }
+        // Sets the value into a string 
+        private static string SetValue(int number)
+        {
+            switch (number)
+            {
+                case 1:
+                    return "Ace";
+                case 11:
+                    return "Jack";
+                case 12:
+                    return "Queen";
+                case 13:
+                    return "King";
+                default:
+                    return number.ToString();
+            }
         }
 
         // Templete for creating individual cards
