@@ -8,33 +8,74 @@ namespace Blackjack
 {
     class Program
     {
-        static List<Card> doubleDeck = new List<Card>();
+        static List<Card> shoe = new List<Card>();
         static Random r = new Random();
+        static int score = 0;
 
         static void Main(string[] args)
         {
+            CreatingShoe();
 
+            Console.WriteLine("Press enter to start the game:");
+            Console.ReadLine();
+            while (shoe.Count() > 0)
+            {
+                Card card = PickCard();
+                
+                string colour = SetColour(card.colour);
+                string number = SetValue(card.number);
+                Console.WriteLine("Draw a card? (y/n)");
+                string answer = Console.ReadLine();
+                if (answer == "y")
+                {
+                    Console.WriteLine("You drew the {0} of {1}", number, colour);
+                    score += card.number;
+                    Console.WriteLine("Your score is {0}", score);
+                    if (score == 21)
+                    {
+                        Console.WriteLine("You won!");
+                        break;
+                    }
+                    else if (score > 21)
+                    {
+                        Console.WriteLine("You lost.");
+                        score = 0;
+                    }
+                }
+                else if (answer == "n")
+                {
+                    Console.WriteLine("Your score: {0}", score);
+                    score = 0;
+                }
+
+                if (shoe.Count == 0)
+                {
+                    Console.WriteLine("Shoe is empty");
+                    break;
+                }
+                Console.WriteLine("Cards left: {0}\n", shoe.Count);
+            }
         }
 
         // Creates deck, and adds all the cards twice to the list "deck"
-        private static void CreatingLargeDeck()
+        private static void CreatingShoe()
         {
             for (int colour = 0; colour < 4; colour++)
             {
                 for (int number = 1; number < 14; number++)
                 {
-                    doubleDeck.Add(new Card(colour, number));
-                    doubleDeck.Add(new Card(colour, number));
+                    shoe.Add(new Card(colour, number));
+                    shoe.Add(new Card(colour, number));
                 }
             }
         }
         // Picks a random card from the large deck
-        private static Card PickCardLargeDeck()
+        private static Card PickCard()
         {
-            int deckPosition = r.Next(0, doubleDeck.Count());
-            Card pickedCard = doubleDeck[deckPosition];
-            doubleDeck.RemoveAt(deckPosition);
-            return pickedCard;
+            int deckPosition = r.Next(0, shoe.Count);
+            Card pickCard = shoe[deckPosition];
+            shoe.RemoveAt(deckPosition);
+            return pickCard;
         }
 
         // Sets colours to strings with the colourname 
