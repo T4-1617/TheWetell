@@ -10,7 +10,11 @@ namespace Blackjack
     {
         static List<Card> shoe = new List<Card>();
         static Random r = new Random();
-        static int score = 0;
+
+        static int playerPoints = 0;
+        static int playerScore = 0;
+
+        static int dealerPoints = 0;
 
         static void Main(string[] args)
         {
@@ -18,61 +22,114 @@ namespace Blackjack
 
             Console.WriteLine("Press enter to start the game:");
             Console.ReadLine();
+
+            // Initializing some variables
+            Card dealerCard = PickCard();
+            dealerPoints += dealerCard.number;
+            string dealerColour = SetColour(dealerCard.colour);
+            string dealerNumber = SetValue(dealerCard.number);
+
+            // Dealer draws a random card
+            Console.WriteLine("Dealer drew the {0} of {1}", dealerNumber, dealerColour);
+            Console.WriteLine("Dealer points: {0}", dealerPoints);
+
+            // Continues game if there are more than 0 cards in shoe
             while (shoe.Count() > 0)
             {
                 Console.WriteLine("Draw a card? (y/n)");
-                string answer = "y";
+                string answer = Console.ReadLine();
+                Console.WriteLine("\n");
 
                 switch (answer)
                 {
                     case "y":
+                        //Draws a card to player
                         Card card = PickCard();
-
                         string colour = SetColour(card.colour);
                         string number = SetValue(card.number);
+
                         Console.WriteLine("You drew the {0} of {1}", number, colour);
+
+                        // Changes card number (value) to 10 if number is over 10
                         if (card.number > 10)
                         {
                             card.number = 10;
                         }
-                        if (card.number == 1)
-                        {
-                            if (score < 11)
-                            {
-                                card.number = 10;
-                            }
-                        }
-                        score += card.number;
-                        Console.WriteLine("Your score is {0}", score);
 
-                        if (score == 21)
+                        // The Aces function
+                        if (card.number == 1 && playerPoints < 11)
+                        {
+                            card.number = 11;
+                        }
+
+                        playerPoints += card.number;
+                        Console.WriteLine("You have {0} points\n", playerPoints);
+
+                        // Player win
+                        if (playerPoints == 21)
                         {
                             Console.WriteLine("You won!");
-                            return;
+                            playerScore += 3;
+                            Console.WriteLine("Player score: {0}\n", playerScore);
+                            playerPoints = 0;
+                            break;
                         }
-                        else if (score > 21)
+
+                        // Player lose
+                        else if (playerPoints > 21)
                         {
                             Console.WriteLine("You lost.");
-                            score = 0;
+                            playerScore -= 1;
+                            playerPoints = 0;
+                            Console.WriteLine("Player score: {0}\n", playerScore);
                         }
-                        break;
-                    case "n":
-                        Console.WriteLine("Your score: {0}", score);
-                        score = 0;
+
                         break;
 
-                    default:
-                        break;
+                    case "n":
+                        // Draws card until points are higher than the players points
+                        while (dealerPoints < playerPoints)
+                        {
+                            dealerCard = PickCard();
+                            dealerPoints += dealerCard.number;
+
+                            // Breaks the loop if dealer have more points than player
+                            if (dealerPoints > playerPoints)
+                            {
+                                break;
+                            }
+                        }
+
+                        // Dealer wins
+                        if (dealerPoints >= playerPoints && dealerPoints <= 21)
+                        {
+                            Console.WriteLine("Dealer won!");
+                            playerScore -= 1;
+                            Console.WriteLine("Player score: {0}\n", playerScore);
+                            playerPoints = 0;
+                            dealerPoints = 0;
+                            break;
+                        }
+                        // Dealer gets full and player wins
+                        else
+                        {
+                            Console.WriteLine("You won!");
+                            playerScore += 1;
+                            Console.WriteLine("Player score: {0}\n", playerScore);
+                            playerPoints = 0;
+                            dealerPoints = 0;
+                            break;
+                        }
                 }
 
                 if (shoe.Count == 0)
                 {
                     Console.WriteLine("Shoe is empty");
-                    break;
+                    Console.WriteLine("Player score: {0}", playerScore);
+                    CreatingShoe();
                 }
                 Console.WriteLine("Cards left: {0}\n", shoe.Count);
             }
-
         }
         // Creates deck, and adds all the cards twice to the list "deck"
         private static void CreatingShoe()
@@ -81,6 +138,8 @@ namespace Blackjack
             {
                 for (int number = 1; number < 14; number++)
                 {
+                    shoe.Add(new Card(colour, number));
+                    shoe.Add(new Card(colour, number));
                     shoe.Add(new Card(colour, number));
                     shoe.Add(new Card(colour, number));
                 }
