@@ -35,8 +35,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtNumberCustomers = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -79,11 +77,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 14F);
-            this.label1.Location = new System.Drawing.Point(12, 240);
+            this.label1.Location = new System.Drawing.Point(12, 235);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 22);
+            this.label1.Size = new System.Drawing.Size(292, 22);
             this.label1.TabIndex = 4;
-            this.label1.Text = "You have";
+            this.label1.Text = "You have 0 number of customers.";
             // 
             // label2
             // 
@@ -105,31 +103,11 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Last name:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 14F);
-            this.label4.Location = new System.Drawing.Point(135, 240);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(195, 22);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "number of customers.";
-            // 
-            // txtNumberCustomers
-            // 
-            this.txtNumberCustomers.Font = new System.Drawing.Font("Arial", 14F);
-            this.txtNumberCustomers.Location = new System.Drawing.Point(104, 237);
-            this.txtNumberCustomers.Name = "txtNumberCustomers";
-            this.txtNumberCustomers.Size = new System.Drawing.Size(25, 29);
-            this.txtNumberCustomers.TabIndex = 8;
-            // 
             // Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 283);
-            this.Controls.Add(this.txtNumberCustomers);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(333, 267);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -153,8 +131,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNumberCustomers;
     }
 }
 
