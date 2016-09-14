@@ -8,14 +8,19 @@ namespace CarCompany
 {
     class Car
     {
-        Random r = new Random();
-        public int RegNumber()
+        public string make { get; set; }
+        public string model { get; set; }
+        public int regNumber { get; set; }
+        public string seats { get; set; }
+
+        public Car()
         {
-            int plate = r.Next(100, 500);
-            return plate;
+            make = "Unknown";
+            model = "X";
+            regNumber = 0;
+            seats = "0";
         }
-        public string Type { get; set; }
-        public int Seats { get; set; }
-        public int Volume { get; set; }
     }
+
+
 }
