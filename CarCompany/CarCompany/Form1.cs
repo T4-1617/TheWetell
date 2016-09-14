@@ -27,20 +27,18 @@ namespace CarCompany
 
             listBoxCars.DisplayMember = "make";
 
-            listBoxCars.Items.Add(new Car() { make = "Volvo" });
-            listBoxCars.Items.Add(new Car() { make = "Ford" });
-            listBoxCars.Items.Add(new Car() { make = "Mercedes-Benz" });
-            listBoxCars.Items.Add(new Car() { make = "Renault" });
-            listBoxCars.Items.Add(new Car() { make = "Opel" });
+            Random r = new Random();
+            listBoxCars.Items.Add(new Car() { make = "Volvo", regNumber = r.Next(100,500) });
+            listBoxCars.Items.Add(new Car() { make = "Ford", regNumber = r.Next(100, 500) });
+            listBoxCars.Items.Add(new Car() { make = "Mercedes-Benz", regNumber = r.Next(100, 500) });
+            listBoxCars.Items.Add(new Car() { make = "Renault", regNumber = r.Next(100, 500) });
+            listBoxCars.Items.Add(new Car() { make = "Opel", regNumber = r.Next(100, 500) });
 
         }
 
         private void listBoxCars_SelectedIndexChanged(object sender, EventArgs e)
         {
             Car car = (Car)listBoxCars.SelectedItem;
-
-            Random r = new Random();
-            car.regNumber = r.Next(100, 500);
 
             txtMake.Text = car.make;
             txtModel.Text = car.model;
