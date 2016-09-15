@@ -13,6 +13,7 @@ namespace CarCompany
 {
     public partial class Cars : Form
     {
+        Random r = new Random();
 
         public Cars()
         {
@@ -26,13 +27,12 @@ namespace CarCompany
             listBoxCars.DisplayMember = "make";
 
             // Sets a random registration number on each vehicle
-            Random r = new Random();
+            
             listBoxCars.Items.Add(new Car() { make = "Volvo", regNumber = r.Next(100,500) });
             listBoxCars.Items.Add(new Car() { make = "Ford", regNumber = r.Next(100, 500) });
             listBoxCars.Items.Add(new Car() { make = "Mercedes-Benz", regNumber = r.Next(100, 500) });
             listBoxCars.Items.Add(new Car() { make = "Renault", regNumber = r.Next(100, 500) });
             listBoxCars.Items.Add(new Car() { make = "Opel", regNumber = r.Next(100, 500) });
-
         }
 
         private void listBoxCars_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,6 +59,7 @@ namespace CarCompany
             Car car = (Car)listBoxCars.SelectedItem;
 
             // Lets user change the variable values
+            car.make = txtMake.Text;
             car.model = txtModel.Text;
             car.seats = txtSeats.Text;
 
@@ -90,12 +91,26 @@ namespace CarCompany
                 
                 // Some textboxes become writable
                 case false:
+                    txtMake.ReadOnly = false;
                     txtModel.ReadOnly = false;
                     txtSeats.ReadOnly = false;
                     break;
                 default:
                     break;
             }
+        }
+
+        // Method for adding new cars to list
+        private void btnAddCar_Click(object sender, EventArgs e)
+        {
+            // Adds a new car
+            listBoxCars.Items.Add(new Car() { make = "Unkown", regNumber = r.Next(100, 500) });
+            
+            editInfo(false);
+
+            //Selects the last added car and open the panel
+            listBoxCars.SelectedIndex = listBoxCars.Items.Count -1;
+            panelInfo.Visible = true;
         }
     }
 }
