@@ -22,7 +22,7 @@ namespace CarCompany
             panelInfo.Visible = false;
 
             // Sets all textboxes to non-writable
-            editInfo(true);
+            editInfo(false);
 
             listBoxCars.DisplayMember = "make";
 
@@ -51,7 +51,7 @@ namespace CarCompany
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // Sets textboxes to writable
-            editInfo(false);
+            editInfo(true);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace CarCompany
             car.model = txtModel.Text;
             car.seats = txtSeats.Text;
 
-            editInfo(true);
+            editInfo(false);
 
             // Sleep used to make the program less rigid
             Thread.Sleep(200);
@@ -83,17 +83,17 @@ namespace CarCompany
             {
                 // Textboxes become non-writable
                 case true:
-                    txtMake.ReadOnly = true;
-                    txtModel.ReadOnly = true;
-                    txtRegNum.ReadOnly = true;
-                    txtSeats.ReadOnly = true;
+                    txtMake.ReadOnly = false;
+                    txtModel.ReadOnly = false;
+                    txtSeats.ReadOnly = false;
                     break;
                 
                 // Some textboxes become writable
                 case false:
-                    txtMake.ReadOnly = false;
-                    txtModel.ReadOnly = false;
-                    txtSeats.ReadOnly = false;
+                    txtMake.ReadOnly = true;
+                    txtModel.ReadOnly = true;
+                    txtRegNum.ReadOnly = true;
+                    txtSeats.ReadOnly = true;
                     break;
                 default:
                     break;
@@ -106,7 +106,7 @@ namespace CarCompany
             // Adds a new car
             listBoxCars.Items.Add(new Car() { make = "Unkown", regNumber = r.Next(100, 500) });
             
-            editInfo(false);
+            editInfo(true);
 
             //Selects the last added car and open the panel
             listBoxCars.SelectedIndex = listBoxCars.Items.Count -1;
