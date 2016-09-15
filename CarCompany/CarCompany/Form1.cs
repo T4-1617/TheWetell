@@ -23,13 +23,13 @@ namespace CarCompany
             panelInfo.Visible = false;
 
             // Sets all textboxes to non-writable
-            editInfo(false);
+            EditInfo(false);
 
             listBoxCars.DisplayMember = "make";
 
             // Sets a random registration number on each vehicle
-            
-            listBoxCars.Items.Add(new Car() { make = "Volvo", regNumber = r.Next(100,500) });
+
+            listBoxCars.Items.Add(new Car() { make = "Volvo", regNumber = r.Next(100, 500) });
             listBoxCars.Items.Add(new Car() { make = "Ford", regNumber = r.Next(100, 500) });
             listBoxCars.Items.Add(new Car() { make = "Mercedes-Benz", regNumber = r.Next(100, 500) });
             listBoxCars.Items.Add(new Car() { make = "Renault", regNumber = r.Next(100, 500) });
@@ -52,7 +52,7 @@ namespace CarCompany
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // Sets textboxes to writable
-            editInfo(true);
+            EditInfo(true);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -61,10 +61,11 @@ namespace CarCompany
 
             // Lets user change the variable values
             car.make = txtMake.Text;
+            //listBoxCars.Items[listBoxCars.SelectedIndex] = car.make;
             car.model = txtModel.Text;
             car.seats = txtSeats.Text;
 
-            editInfo(false);
+            EditInfo(false);
 
             // Sleep used to make the program less rigid
             Thread.Sleep(200);
@@ -73,12 +74,11 @@ namespace CarCompany
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Car car = (Car)listBoxCars.SelectedItem;
             panelInfo.Visible = false;
         }
 
         // Method that sets text boxes to writable or not
-        private void editInfo(bool edit)
+        private void EditInfo(bool edit)
         {
             switch (edit)
             {
@@ -88,7 +88,7 @@ namespace CarCompany
                     txtModel.ReadOnly = false;
                     txtSeats.ReadOnly = false;
                     break;
-                
+
                 // Some textboxes become writable
                 case false:
                     txtMake.ReadOnly = true;
@@ -105,28 +105,31 @@ namespace CarCompany
         private void btnAddCar_Click(object sender, EventArgs e)
         {
             // Adds a new car
-            listBoxCars.Items.Add(new Car() { make = "Unkown", regNumber = r.Next(100, 500) });
-            
-            editInfo(true);
+            listBoxCars.Items.Add(new Car() { regNumber = r.Next(100, 500) });
+
+            EditInfo(true);
 
             //Selects the last added car and open the panel
-            listBoxCars.SelectedIndex = listBoxCars.Items.Count -1;
+            listBoxCars.SelectedIndex = listBoxCars.Items.Count - 1;
             panelInfo.Visible = true;
         }
 
         // Method that saves the car list in a .txt file on the desktop
         private void btnSaveCarList_Click(object sender, EventArgs e)
         {
+            Car car = (Car)listBoxCars.SelectedItem;
+
             // Variable for a save file dialog window
             var saveFile = new SaveFileDialog();
             saveFile.Filter = "Text (*.txt)|*.txt";
+
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
                 using (var sw = new StreamWriter(saveFile.FileName, false))
-                    
+
                     // Adds each car in list to the .txt file
                     foreach (var item in listBoxCars.Items)
-                        sw.Write(item.ToString() + Environment.NewLine);
+                        sw.Write(car.make.ToString() + Environment.NewLine);
                 MessageBox.Show("List successfully saved.", "Save");
             }
         }
