@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -111,6 +112,23 @@ namespace CarCompany
             //Selects the last added car and open the panel
             listBoxCars.SelectedIndex = listBoxCars.Items.Count -1;
             panelInfo.Visible = true;
+        }
+
+        // Method that saves the car list in a .txt file on the desktop
+        private void btnSaveCarList_Click(object sender, EventArgs e)
+        {
+            // Variable for a save file dialog window
+            var saveFile = new SaveFileDialog();
+            saveFile.Filter = "Text (*.txt)|*.txt";
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                using (var sw = new StreamWriter(saveFile.FileName, false))
+                    
+                    // Adds each car in list to the .txt file
+                    foreach (var item in listBoxCars.Items)
+                        sw.Write(item.ToString() + Environment.NewLine);
+                MessageBox.Show("List successfully saved.", "Save");
+            }
         }
     }
 }
