@@ -34,11 +34,13 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.rBtnCustomer = new System.Windows.Forms.RadioButton();
             this.rBtnEmployee = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddName = new System.Windows.Forms.Button();
             this.listBoxCustomers = new System.Windows.Forms.ListBox();
             this.listBoxEmployees = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.groupBoxName = new System.Windows.Forms.GroupBox();
+            this.groupBoxName.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -81,7 +83,7 @@
             // 
             this.rBtnCustomer.AutoSize = true;
             this.rBtnCustomer.Font = new System.Drawing.Font("Arial", 14F);
-            this.rBtnCustomer.Location = new System.Drawing.Point(32, 118);
+            this.rBtnCustomer.Location = new System.Drawing.Point(6, 12);
             this.rBtnCustomer.Name = "rBtnCustomer";
             this.rBtnCustomer.Size = new System.Drawing.Size(111, 26);
             this.rBtnCustomer.TabIndex = 4;
@@ -93,7 +95,7 @@
             // 
             this.rBtnEmployee.AutoSize = true;
             this.rBtnEmployee.Font = new System.Drawing.Font("Arial", 14F);
-            this.rBtnEmployee.Location = new System.Drawing.Point(149, 118);
+            this.rBtnEmployee.Location = new System.Drawing.Point(123, 12);
             this.rBtnEmployee.Name = "rBtnEmployee";
             this.rBtnEmployee.Size = new System.Drawing.Size(114, 26);
             this.rBtnEmployee.TabIndex = 5;
@@ -101,22 +103,23 @@
             this.rBtnEmployee.Text = "Employee";
             this.rBtnEmployee.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnAddName
             // 
-            this.button1.Font = new System.Drawing.Font("Arial", 14F);
-            this.button1.Location = new System.Drawing.Point(269, 115);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 33);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Print";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddName.Font = new System.Drawing.Font("Arial", 14F);
+            this.btnAddName.Location = new System.Drawing.Point(243, 9);
+            this.btnAddName.Name = "btnAddName";
+            this.btnAddName.Size = new System.Drawing.Size(95, 33);
+            this.btnAddName.TabIndex = 6;
+            this.btnAddName.Text = "Print";
+            this.btnAddName.UseVisualStyleBackColor = true;
+            this.btnAddName.Click += new System.EventHandler(this.btnAddName_Click);
             // 
             // listBoxCustomers
             // 
             this.listBoxCustomers.Font = new System.Drawing.Font("Arial", 14F);
             this.listBoxCustomers.FormattingEnabled = true;
             this.listBoxCustomers.ItemHeight = 22;
-            this.listBoxCustomers.Location = new System.Drawing.Point(32, 205);
+            this.listBoxCustomers.Location = new System.Drawing.Point(32, 222);
             this.listBoxCustomers.Name = "listBoxCustomers";
             this.listBoxCustomers.Size = new System.Drawing.Size(297, 114);
             this.listBoxCustomers.TabIndex = 7;
@@ -151,24 +154,35 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Employees:";
             // 
+            // groupBoxName
+            // 
+            this.groupBoxName.Controls.Add(this.rBtnCustomer);
+            this.groupBoxName.Controls.Add(this.rBtnEmployee);
+            this.groupBoxName.Controls.Add(this.btnAddName);
+            this.groupBoxName.Location = new System.Drawing.Point(32, 106);
+            this.groupBoxName.Name = "groupBoxName";
+            this.groupBoxName.Size = new System.Drawing.Size(346, 47);
+            this.groupBoxName.TabIndex = 11;
+            this.groupBoxName.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(390, 503);
+            this.Controls.Add(this.groupBoxName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listBoxEmployees);
             this.Controls.Add(this.listBoxCustomers);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.rBtnEmployee);
-            this.Controls.Add(this.rBtnCustomer);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.groupBoxName.ResumeLayout(false);
+            this.groupBoxName.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,11 +196,12 @@
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.RadioButton rBtnCustomer;
         private System.Windows.Forms.RadioButton rBtnEmployee;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddName;
         private System.Windows.Forms.ListBox listBoxCustomers;
         private System.Windows.Forms.ListBox listBoxEmployees;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBoxName;
     }
 }
 
