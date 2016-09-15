@@ -10,11 +10,24 @@ using System.Windows.Forms;
 
 namespace CarRental
 {
-    public partial class Form1 : Form
+    public partial class CarRental : Form
     {
-        public Form1()
+        public CarRental()
         {
             InitializeComponent();
+            pnlAvailableCars.Visible = false;
+            pnlThankYou.Visible = false;
+
+            pnlAddCar.Visible = false;
+
+            pnlRetunCar.Visible = false;
+            pnlReturnThanks.Visible = false;
+
+        }
+
+        private void btnShowCars_Click(object sender, EventArgs e)
+        {
+            pnlAvailableCars.Visible = true;
         }
     }
 }
