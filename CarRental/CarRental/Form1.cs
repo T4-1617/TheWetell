@@ -59,14 +59,19 @@ namespace CarRental
             ShowAvailableCars();
         }
 
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            pnlReturnThanks.Visible = true;
+
+            Thread.Sleep(5000);
+            Visable(false);
+            pnlRetunCar.Visible = true;
+        }
+
         private void Visable(bool toggle)
         {
             switch (toggle)
             {
-                case true:
-                    toggle = true;
-                    break;
-
                 case false:
                     pnlAvailableCars.Visible = false;
                     pnlThankYouBooking.Visible = false;
@@ -76,6 +81,7 @@ namespace CarRental
                     break;
 
                 default:
+                    toggle = true;
                     break;
             }
         }
@@ -90,6 +96,7 @@ namespace CarRental
 
             }
         }
+
 
     }
 }
