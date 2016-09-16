@@ -26,27 +26,45 @@ namespace CarRental
             carList.Add(new Car() { Make = "Volvo" });
             carList.Add(new Car() { Make = "Opel" });
             carList.Add(new Car() { Make = "Ford" });
+
+            listBoxAvailableCars.Items.Clear();
+            listBoxAvailableCars.Items.Clear();
+            foreach (Car car in carList)
+            {
+                switch (car.Hired)
+                {
+                    case false:
+                        listBoxAvailableCars.Items.Add(car);
+                        listBoxAvailableCars.DisplayMember = "Make";
+                        break;
+
+                    case true:
+                        listBoxReturnCars.Items.Add(car);
+                        listBoxReturnCars.DisplayMember = "Make";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
         }
 
         private void btnShowAvailableCars_Click(object sender, EventArgs e)
         {
+            Car tempCar = new Car();
+
             VisiblePanel(false);
             pnlAvailableCars.Visible = true;
-            ShowAvailableCars();
         }
 
         private void btnBookCar_Click(object sender, EventArgs e)
         {
-            Car tempCar = new Car();
-
-            VisiblePanel(false);
-            pnlThankYouBooking.Visible = true;
-
+            
         }
 
         private void listBoxAvailableCars_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Car tempCar = new Car();
         }
 
         private void btnAddCar_Click(object sender, EventArgs e)
@@ -57,10 +75,10 @@ namespace CarRental
 
         private void btnReturnCar_Click(object sender, EventArgs e)
         {
+            Car tempCar = new Car();
+
             VisiblePanel(false);
             pnlRetunCar.Visible = true;
-
-            ReturnCars();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -90,31 +108,9 @@ namespace CarRental
             }
         }
 
-        private void ShowAvailableCars()
+        private void HireCar(bool hired)
         {
-            listBoxAvailableCars.Items.Clear();
-            foreach (var car in carList)
-            {
-                listBoxAvailableCars.Items.Add(car);
-                listBoxAvailableCars.DisplayMember = "Make";
-            }
-        }
-
-        private void ReturnCars()
-        {
-            Car tempCar = new Car();
-            if (tempCar.Hired)
-            {
-                listBoxReturnCars.Items.Clear();
-                foreach (var car in carList)
-                {
-                    listBoxReturnCars.Items.Add(car);
-                    listBoxReturnCars.DisplayMember = "Make";
-
-                }
-            }
 
         }
-
     }
 }

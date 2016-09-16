@@ -40,13 +40,11 @@
             this.pnlAddCar = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBoxAddCar = new System.Windows.Forms.GroupBox();
-            this.txtHired = new System.Windows.Forms.TextBox();
             this.txtMilage = new System.Windows.Forms.TextBox();
             this.txtSeats = new System.Windows.Forms.TextBox();
             this.txtColour = new System.Windows.Forms.TextBox();
             this.txtModel = new System.Windows.Forms.TextBox();
             this.txtMake = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -183,13 +181,11 @@
             // 
             // groupBoxAddCar
             // 
-            this.groupBoxAddCar.Controls.Add(this.txtHired);
             this.groupBoxAddCar.Controls.Add(this.txtMilage);
             this.groupBoxAddCar.Controls.Add(this.txtSeats);
             this.groupBoxAddCar.Controls.Add(this.txtColour);
             this.groupBoxAddCar.Controls.Add(this.txtModel);
             this.groupBoxAddCar.Controls.Add(this.txtMake);
-            this.groupBoxAddCar.Controls.Add(this.label8);
             this.groupBoxAddCar.Controls.Add(this.label7);
             this.groupBoxAddCar.Controls.Add(this.label6);
             this.groupBoxAddCar.Controls.Add(this.label5);
@@ -203,18 +199,10 @@
             this.groupBoxAddCar.TabStop = false;
             this.groupBoxAddCar.Text = "Add Car";
             // 
-            // txtHired
-            // 
-            this.txtHired.Font = new System.Drawing.Font("Arial", 15F);
-            this.txtHired.Location = new System.Drawing.Point(184, 286);
-            this.txtHired.Name = "txtHired";
-            this.txtHired.Size = new System.Drawing.Size(143, 30);
-            this.txtHired.TabIndex = 11;
-            // 
             // txtMilage
             // 
             this.txtMilage.Font = new System.Drawing.Font("Arial", 15F);
-            this.txtMilage.Location = new System.Drawing.Point(184, 244);
+            this.txtMilage.Location = new System.Drawing.Point(169, 275);
             this.txtMilage.Name = "txtMilage";
             this.txtMilage.Size = new System.Drawing.Size(143, 30);
             this.txtMilage.TabIndex = 10;
@@ -222,7 +210,7 @@
             // txtSeats
             // 
             this.txtSeats.Font = new System.Drawing.Font("Arial", 15F);
-            this.txtSeats.Location = new System.Drawing.Point(186, 202);
+            this.txtSeats.Location = new System.Drawing.Point(171, 233);
             this.txtSeats.Name = "txtSeats";
             this.txtSeats.Size = new System.Drawing.Size(143, 30);
             this.txtSeats.TabIndex = 9;
@@ -230,7 +218,7 @@
             // txtColour
             // 
             this.txtColour.Font = new System.Drawing.Font("Arial", 15F);
-            this.txtColour.Location = new System.Drawing.Point(184, 160);
+            this.txtColour.Location = new System.Drawing.Point(169, 191);
             this.txtColour.Name = "txtColour";
             this.txtColour.Size = new System.Drawing.Size(143, 30);
             this.txtColour.TabIndex = 8;
@@ -238,7 +226,7 @@
             // txtModel
             // 
             this.txtModel.Font = new System.Drawing.Font("Arial", 15F);
-            this.txtModel.Location = new System.Drawing.Point(184, 117);
+            this.txtModel.Location = new System.Drawing.Point(169, 148);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(143, 30);
             this.txtModel.TabIndex = 7;
@@ -246,26 +234,16 @@
             // txtMake
             // 
             this.txtMake.Font = new System.Drawing.Font("Arial", 15F);
-            this.txtMake.Location = new System.Drawing.Point(184, 76);
+            this.txtMake.Location = new System.Drawing.Point(169, 107);
             this.txtMake.Name = "txtMake";
             this.txtMake.Size = new System.Drawing.Size(143, 30);
             this.txtMake.TabIndex = 6;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 24F);
-            this.label8.Location = new System.Drawing.Point(47, 279);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 36);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Hired:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 24F);
-            this.label7.Location = new System.Drawing.Point(47, 237);
+            this.label7.Location = new System.Drawing.Point(32, 268);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(116, 36);
             this.label7.TabIndex = 4;
@@ -275,7 +253,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 24F);
-            this.label6.Location = new System.Drawing.Point(47, 195);
+            this.label6.Location = new System.Drawing.Point(32, 226);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 36);
             this.label6.TabIndex = 3;
@@ -285,7 +263,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 24F);
-            this.label5.Location = new System.Drawing.Point(47, 153);
+            this.label5.Location = new System.Drawing.Point(32, 184);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(117, 36);
             this.label5.TabIndex = 2;
@@ -295,7 +273,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 24F);
-            this.label4.Location = new System.Drawing.Point(47, 111);
+            this.label4.Location = new System.Drawing.Point(32, 142);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 36);
             this.label4.TabIndex = 1;
@@ -305,7 +283,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 24F);
-            this.label3.Location = new System.Drawing.Point(47, 69);
+            this.label3.Location = new System.Drawing.Point(32, 100);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 36);
             this.label3.TabIndex = 0;
@@ -386,11 +364,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 607);
+            this.Controls.Add(this.pnlAddCar);
             this.Controls.Add(this.pnlAvailableCars);
             this.Controls.Add(this.pnlThankYouBooking);
             this.Controls.Add(this.pnlReturnThanks);
             this.Controls.Add(this.pnlRetunCar);
-            this.Controls.Add(this.pnlAddCar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnShowAvailableCars);
             this.Controls.Add(this.btnAddCar);
@@ -433,13 +411,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtHired;
         private System.Windows.Forms.TextBox txtMilage;
         private System.Windows.Forms.TextBox txtSeats;
         private System.Windows.Forms.TextBox txtColour;
         private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.TextBox txtMake;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBoxReturnCar;
         private System.Windows.Forms.Panel pnlReturnThanks;
         private System.Windows.Forms.Label label9;
