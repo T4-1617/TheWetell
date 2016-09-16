@@ -15,16 +15,19 @@ namespace CarRental
     {
         System.Collections.ArrayList carList;
 
+        // Counts number of cars
         int countCars;
 
         public CarRental()
         {
             InitializeComponent();
 
+            // Sets all panels non-visible
             VisiblePanel(false);
 
             carList = new System.Collections.ArrayList();
 
+            // Adds three "static" cars
             carList.Add(new Car()
             {
                 Make = "Volvo",
@@ -53,8 +56,11 @@ namespace CarRental
                 Hired = false
             });
 
+            // Clears listBoxes before adding new cars to prevent duplicates
             listBoxAvailableCars.Items.Clear();
             listBoxAvailableCars.Items.Clear();
+
+            // Adds cars in respective listBoxes
             foreach (Car car in carList)
             {
                 switch (car.Hired)
@@ -76,10 +82,10 @@ namespace CarRental
             }
         }
 
+        // Show and hire cars
         private void btnShowAvailableCars_Click(object sender, EventArgs e)
         {
-            Car tempCar = new Car();
-
+            // Sets all panel to non-visible and sets proper panel to visible
             VisiblePanel(false);
             pnlAvailableCars.Visible = true;
         }
@@ -87,14 +93,18 @@ namespace CarRental
         {
             if (listBoxAvailableCars.SelectedIndex != -1)
             {
+                // Sets the car to hired
                 HireCar(true);
+                //Hides all "useless" panel and displays thanks panel
                 VisiblePanel(false);
                 pnlThankYouBooking.Visible = true;
             }
         }
 
+        // Return car
         private void btnReturnCar_Click(object sender, EventArgs e)
         {
+            // Sets all panel to non-visible and sets proper panel to visible
             VisiblePanel(false);
             pnlRetunCar.Visible = true;
         }
@@ -102,14 +112,18 @@ namespace CarRental
         {
             if (listBoxReturnCars.SelectedIndex != -1)
             {
+                // Sets the car to available
                 HireCar(false);
+                //Hides all "useless" panel and displays thanks panel
                 VisiblePanel(false);
                 pnlReturnThanks.Visible = true;
             }
         }
 
+        // Add car
         private void btnAddCar_Click(object sender, EventArgs e)
         {
+            // Sets all panel to non-visible and sets proper panel to visible
             VisiblePanel(false);
             pnlAddCar.Visible = true;
         }
@@ -154,10 +168,12 @@ namespace CarRental
             }
         }
 
+        // Toogle switch to hide and show panels
         void VisiblePanel(bool toggle)
         {
             switch (toggle)
             {
+                //Turns "off" all panels
                 case false:
                     pnlAvailableCars.Visible = false;
                     pnlThankYouBooking.Visible = false;
@@ -167,7 +183,6 @@ namespace CarRental
                     break;
 
                 default:
-                    toggle = true;
                     break;
             }
         }
@@ -179,17 +194,21 @@ namespace CarRental
             switch (hired)
             {
                 case false:
+                    // Gets the selected car to "car"
                     car = (Car)listBoxReturnCars.SelectedItem;
+                    // Removes chosen car from the list
                     listBoxReturnCars.Items.RemoveAt(listBoxReturnCars.SelectedIndex);
+                    // Adds the car to non-hired list
                     listBoxAvailableCars.Items.Add(car);
                     break;
 
                 case true:
+                    // Gets the selected car to "car"
                     car = (Car)listBoxAvailableCars.SelectedItem;
+                    // Removes chosen car from the list
                     listBoxAvailableCars.Items.RemoveAt(listBoxAvailableCars.SelectedIndex);
+                    // Adds the car to hired list
                     listBoxReturnCars.Items.Add(car);
-                    break;
-                default:
                     break;
             }
             CountCars();
@@ -198,7 +217,9 @@ namespace CarRental
 
         void CountCars()
         {
+            // Retrieves number of cars in avaliable list
             countCars = listBoxAvailableCars.Items.Count;
+            // Prints the label with updated car count
             lblCountCars.Text = string.Format("We have {0} cars available", countCars);
         }
 
