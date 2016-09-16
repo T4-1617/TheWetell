@@ -23,9 +23,33 @@ namespace CarRental
 
             carList = new System.Collections.ArrayList();
 
-            carList.Add(new Car() { Make = "Volvo" });
-            carList.Add(new Car() { Make = "Opel" });
-            carList.Add(new Car() { Make = "Ford" });
+            carList.Add(new Car()
+            {
+                Make = "Volvo",
+                Model = "V70",
+                Colour = "Red",
+                Seats = 5,
+                Milage = 1000,
+                Hired = false
+            });
+            carList.Add(new Car()
+            {
+                Make = "Ford",
+                Model = "Fiesta",
+                Colour = "White",
+                Seats = 5,
+                Milage = 5000,
+                Hired = false
+            });
+            carList.Add(new Car()
+            {
+                Make = "Seat",
+                Model = "Leon",
+                Colour = "Blue",
+                Seats = 5,
+                Milage = 10000,
+                Hired = true
+            });
 
             listBoxAvailableCars.Items.Clear();
             listBoxAvailableCars.Items.Clear();
@@ -59,7 +83,12 @@ namespace CarRental
 
         private void btnBookCar_Click(object sender, EventArgs e)
         {
-            
+            if (listBoxAvailableCars.SelectedIndex != -1)
+            {
+                HireCar(true);
+                VisiblePanel(false);
+                pnlThankYouBooking.Visible = true;
+            }
         }
 
         private void listBoxAvailableCars_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,19 +104,18 @@ namespace CarRental
 
         private void btnReturnCar_Click(object sender, EventArgs e)
         {
-            Car tempCar = new Car();
-
             VisiblePanel(false);
             pnlRetunCar.Visible = true;
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            Car tempCar = new Car();
-
-            VisiblePanel(false);
-            pnlReturnThanks.Visible = true;
-
+            if (listBoxReturnCars.SelectedIndex != -1)
+            {
+                HireCar(false);
+                VisiblePanel(false);
+                pnlReturnThanks.Visible = true;
+            }
         }
 
         private void VisiblePanel(bool toggle)
@@ -108,9 +136,26 @@ namespace CarRental
             }
         }
 
-        private void HireCar(bool hired)
+        void HireCar(bool hired)
         {
+            Car car;
 
+            switch (hired)
+            {
+                case false:
+                    car = (Car)listBoxReturnCars.SelectedItem;
+                    listBoxReturnCars.Items.RemoveAt(listBoxReturnCars.SelectedIndex);
+                    listBoxAvailableCars.Items.Add(car);
+                    break;
+
+                case true:
+                    car = (Car)listBoxAvailableCars.SelectedItem;
+                    listBoxAvailableCars.Items.RemoveAt(listBoxAvailableCars.SelectedIndex);
+                    listBoxReturnCars.Items.Add(car);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

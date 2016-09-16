@@ -15,11 +15,5 @@ namespace CarRental
         public int Milage { get; set; }
         public bool Hired { get; set; }
 
-        public Car()
-        {
-            Make = "Unkown";
-            Model = "X";
-            Hired = false;
-        }
     }
 }
