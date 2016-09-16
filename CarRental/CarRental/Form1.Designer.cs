@@ -140,7 +140,6 @@
             this.listBoxAvailableCars.Name = "listBoxAvailableCars";
             this.listBoxAvailableCars.Size = new System.Drawing.Size(327, 292);
             this.listBoxAvailableCars.TabIndex = 0;
-            this.listBoxAvailableCars.SelectedIndexChanged += new System.EventHandler(this.listBoxAvailableCars_SelectedIndexChanged);
             // 
             // pnlThankYouBooking
             // 
@@ -178,6 +177,7 @@
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBoxAddCar
             // 
@@ -206,6 +206,7 @@
             this.txtMilage.Name = "txtMilage";
             this.txtMilage.Size = new System.Drawing.Size(143, 30);
             this.txtMilage.TabIndex = 10;
+            this.txtMilage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMilage_KeyPress);
             // 
             // txtSeats
             // 
@@ -214,6 +215,7 @@
             this.txtSeats.Name = "txtSeats";
             this.txtSeats.Size = new System.Drawing.Size(143, 30);
             this.txtSeats.TabIndex = 9;
+            this.txtSeats.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSeats_KeyPress);
             // 
             // txtColour
             // 

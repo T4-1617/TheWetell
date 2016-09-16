@@ -11,8 +11,8 @@ namespace CarRental
         public string Make { get; set; }
         public string Model { get; set; }
         public string Colour { get; set; }
-        public int Seats { get; set; }
-        public int Milage { get; set; }
+        public string Seats { get; set; }
+        public string Milage { get; set; }
         public bool Hired { get; set; }
 
     }

@@ -30,8 +30,8 @@ namespace CarRental
                 Make = "Volvo",
                 Model = "V70",
                 Colour = "Red",
-                Seats = 5,
-                Milage = 1000,
+                Seats = "5",
+                Milage = "1000",
                 Hired = false
             });
             carList.Add(new Car()
@@ -39,8 +39,8 @@ namespace CarRental
                 Make = "Ford",
                 Model = "Fiesta",
                 Colour = "White",
-                Seats = 5,
-                Milage = 5000,
+                Seats = "5",
+                Milage = "5000",
                 Hired = false
             });
             carList.Add(new Car()
@@ -48,9 +48,9 @@ namespace CarRental
                 Make = "Seat",
                 Model = "Leon",
                 Colour = "Blue",
-                Seats = 5,
-                Milage = 10000,
-                Hired = true
+                Seats = "5",
+                Milage = "10000",
+                Hired = false
             });
 
             listBoxAvailableCars.Items.Clear();
@@ -74,7 +74,6 @@ namespace CarRental
                 }
                 CountCars();
             }
-            
         }
 
         private void btnShowAvailableCars_Click(object sender, EventArgs e)
@@ -84,7 +83,6 @@ namespace CarRental
             VisiblePanel(false);
             pnlAvailableCars.Visible = true;
         }
-
         private void btnBookCar_Click(object sender, EventArgs e)
         {
             if (listBoxAvailableCars.SelectedIndex != -1)
@@ -95,23 +93,11 @@ namespace CarRental
             }
         }
 
-        private void listBoxAvailableCars_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Car tempCar = new Car();
-        }
-
-        private void btnAddCar_Click(object sender, EventArgs e)
-        {
-            VisiblePanel(false);
-            pnlAddCar.Visible = true;
-        }
-
         private void btnReturnCar_Click(object sender, EventArgs e)
         {
             VisiblePanel(false);
             pnlRetunCar.Visible = true;
         }
-
         private void btnReturn_Click(object sender, EventArgs e)
         {
             if (listBoxReturnCars.SelectedIndex != -1)
@@ -122,7 +108,53 @@ namespace CarRental
             }
         }
 
-        private void VisiblePanel(bool toggle)
+        private void btnAddCar_Click(object sender, EventArgs e)
+        {
+            VisiblePanel(false);
+            pnlAddCar.Visible = true;
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Car newCar = new Car();
+
+            newCar.Make = txtMake.Text;
+            newCar.Model = txtModel.Text;
+            newCar.Colour = txtColour.Text;
+            newCar.Seats = txtSeats.Text;
+            newCar.Milage = txtMilage.Text;
+            newCar.Hired = false;
+
+            carList.Add(newCar);
+            CountCars();
+
+            txtMake.Text = string.Empty;
+            txtModel.Text = string.Empty;
+            txtColour.Text = string.Empty;
+            txtSeats.Text = string.Empty;
+            txtMilage.Text = string.Empty;
+        }
+
+        // Forcing the user to enter a number
+        private void txtSeats_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show("Enter a number", "Alert");
+            }
+        }
+        private void txtMilage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show("Enter a number", "Alert");
+            }
+        }
+
+        void VisiblePanel(bool toggle)
         {
             switch (toggle)
             {
@@ -169,5 +201,7 @@ namespace CarRental
             countCars = listBoxAvailableCars.Items.Count;
             lblCountCars.Text = string.Format("We have {0} cars available", countCars);
         }
+
+
     }
 }
