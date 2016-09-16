@@ -15,6 +15,8 @@ namespace CarRental
     {
         System.Collections.ArrayList carList;
 
+        int countCars;
+
         public CarRental()
         {
             InitializeComponent();
@@ -60,6 +62,7 @@ namespace CarRental
                     case false:
                         listBoxAvailableCars.Items.Add(car);
                         listBoxAvailableCars.DisplayMember = "Make";
+                        countCars += 1;
                         break;
 
                     case true:
@@ -69,8 +72,9 @@ namespace CarRental
                     default:
                         break;
                 }
+                CountCars();
             }
-
+            
         }
 
         private void btnShowAvailableCars_Click(object sender, EventArgs e)
@@ -156,6 +160,14 @@ namespace CarRental
                 default:
                     break;
             }
+            CountCars();
+
+        }
+
+        void CountCars()
+        {
+            countCars = listBoxAvailableCars.Items.Count;
+            lblCountCars.Text = string.Format("We have {0} cars available", countCars);
         }
     }
 }

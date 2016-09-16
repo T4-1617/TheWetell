@@ -30,7 +30,7 @@
         {
             this.btnShowAvailableCars = new System.Windows.Forms.Button();
             this.btnAddCar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCountCars = new System.Windows.Forms.Label();
             this.pnlAvailableCars = new System.Windows.Forms.Panel();
             this.groupBoxAvailableCars = new System.Windows.Forms.GroupBox();
             this.btnBookCar = new System.Windows.Forms.Button();
@@ -90,15 +90,15 @@
             this.btnAddCar.UseVisualStyleBackColor = true;
             this.btnAddCar.Click += new System.EventHandler(this.btnAddCar_Click);
             // 
-            // label1
+            // lblCountCars
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 24F);
-            this.label1.Location = new System.Drawing.Point(3, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(365, 36);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "We have 3 cars available";
+            this.lblCountCars.AutoSize = true;
+            this.lblCountCars.Font = new System.Drawing.Font("Arial", 24F);
+            this.lblCountCars.Location = new System.Drawing.Point(3, 9);
+            this.lblCountCars.Name = "lblCountCars";
+            this.lblCountCars.Size = new System.Drawing.Size(365, 36);
+            this.lblCountCars.TabIndex = 3;
+            this.lblCountCars.Text = "We have 3 cars available";
             // 
             // pnlAvailableCars
             // 
@@ -369,7 +369,7 @@
             this.Controls.Add(this.pnlThankYouBooking);
             this.Controls.Add(this.pnlReturnThanks);
             this.Controls.Add(this.pnlRetunCar);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCountCars);
             this.Controls.Add(this.btnShowAvailableCars);
             this.Controls.Add(this.btnAddCar);
             this.Controls.Add(this.btnReturnCar);
@@ -395,7 +395,7 @@
 
         private System.Windows.Forms.Button btnShowAvailableCars;
         private System.Windows.Forms.Button btnAddCar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCountCars;
         private System.Windows.Forms.Panel pnlAvailableCars;
         private System.Windows.Forms.Panel pnlAddCar;
         private System.Windows.Forms.Panel pnlRetunCar;
