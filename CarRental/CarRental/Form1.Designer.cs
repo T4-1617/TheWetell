@@ -142,6 +142,7 @@
             this.listBoxAvailableCars.Name = "listBoxAvailableCars";
             this.listBoxAvailableCars.Size = new System.Drawing.Size(327, 292);
             this.listBoxAvailableCars.TabIndex = 0;
+            this.listBoxAvailableCars.SelectedIndexChanged += new System.EventHandler(this.listBoxAvailableCars_SelectedIndexChanged);
             // 
             // pnlThankYouBooking
             // 

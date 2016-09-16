@@ -37,14 +37,21 @@ namespace CarRental
 
         private void btnBookCar_Click(object sender, EventArgs e)
         {
+            Car tempCar = new Car();
+
             VisiblePanel(false);
-            pnlThankYouBooking.Visible = true; 
+            pnlThankYouBooking.Visible = true;
+
+        }
+
+        private void listBoxAvailableCars_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void btnAddCar_Click(object sender, EventArgs e)
         {
             VisiblePanel(false);
-
             pnlAddCar.Visible = true;
         }
 
@@ -53,13 +60,16 @@ namespace CarRental
             VisiblePanel(false);
             pnlRetunCar.Visible = true;
 
-            ShowAvailableCars();
+            ReturnCars();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            Car tempCar = new Car();
+
             VisiblePanel(false);
             pnlReturnThanks.Visible = true;
+
         }
 
         private void VisiblePanel(bool toggle)
@@ -89,5 +99,22 @@ namespace CarRental
                 listBoxAvailableCars.DisplayMember = "Make";
             }
         }
+
+        private void ReturnCars()
+        {
+            Car tempCar = new Car();
+            if (tempCar.Hired)
+            {
+                listBoxReturnCars.Items.Clear();
+                foreach (var car in carList)
+                {
+                    listBoxReturnCars.Items.Add(car);
+                    listBoxReturnCars.DisplayMember = "Make";
+
+                }
+            }
+
+        }
+
     }
 }
