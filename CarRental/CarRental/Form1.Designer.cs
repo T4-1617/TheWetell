@@ -146,7 +146,7 @@
             // pnlThankYouBooking
             // 
             this.pnlThankYouBooking.Controls.Add(this.label2);
-            this.pnlThankYouBooking.Location = new System.Drawing.Point(3, 188);
+            this.pnlThankYouBooking.Location = new System.Drawing.Point(2, 188);
             this.pnlThankYouBooking.Name = "pnlThankYouBooking";
             this.pnlThankYouBooking.Size = new System.Drawing.Size(960, 394);
             this.pnlThankYouBooking.TabIndex = 2;
@@ -385,15 +385,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 607);
-            this.Controls.Add(this.pnlRetunCar);
-            this.Controls.Add(this.pnlThankYouBooking);
             this.Controls.Add(this.pnlAvailableCars);
+            this.Controls.Add(this.pnlThankYouBooking);
+            this.Controls.Add(this.pnlReturnThanks);
+            this.Controls.Add(this.pnlRetunCar);
             this.Controls.Add(this.pnlAddCar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnShowAvailableCars);
             this.Controls.Add(this.btnAddCar);
             this.Controls.Add(this.btnReturnCar);
-            this.Controls.Add(this.pnlReturnThanks);
             this.Name = "CarRental";
             this.Text = "CarRental";
             this.pnlAvailableCars.ResumeLayout(false);

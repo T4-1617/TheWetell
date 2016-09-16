@@ -19,7 +19,7 @@ namespace CarRental
         {
             InitializeComponent();
 
-            Visable(false);
+            VisiblePanel(false);
 
             carList = new System.Collections.ArrayList();
 
@@ -30,30 +30,27 @@ namespace CarRental
 
         private void btnShowAvailableCars_Click(object sender, EventArgs e)
         {
-            Visable(false);
+            VisiblePanel(false);
             pnlAvailableCars.Visible = true;
             ShowAvailableCars();
         }
 
         private void btnBookCar_Click(object sender, EventArgs e)
         {
-            pnlThankYouBooking.Visible = true;
-
-            Thread.Sleep(5000);
-            Visable(false);
-            pnlAvailableCars.Visible = true;
+            VisiblePanel(false);
+            pnlThankYouBooking.Visible = true; 
         }
 
         private void btnAddCar_Click(object sender, EventArgs e)
         {
-            Visable(false);
+            VisiblePanel(false);
 
             pnlAddCar.Visible = true;
         }
 
         private void btnReturnCar_Click(object sender, EventArgs e)
         {
-            Visable(false);
+            VisiblePanel(false);
             pnlRetunCar.Visible = true;
 
             ShowAvailableCars();
@@ -61,14 +58,11 @@ namespace CarRental
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            VisiblePanel(false);
             pnlReturnThanks.Visible = true;
-
-            Thread.Sleep(5000);
-            Visable(false);
-            pnlRetunCar.Visible = true;
         }
 
-        private void Visable(bool toggle)
+        private void VisiblePanel(bool toggle)
         {
             switch (toggle)
             {
@@ -93,10 +87,7 @@ namespace CarRental
             {
                 listBoxAvailableCars.Items.Add(car);
                 listBoxAvailableCars.DisplayMember = "Make";
-
             }
         }
-
-
     }
 }
