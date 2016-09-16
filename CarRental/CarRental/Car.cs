@@ -10,14 +10,15 @@ namespace CarRental
     {
         public string Make { get; set; }
         public string Model { get; set; }
-        public int RegNumber { get; set; }
+        public string Colour { get; set; }
+        public int Seats { get; set; }
+        public int Milage { get; set; }
         public bool Hired { get; set; }
 
         public Car()
         {
             Make = "Unkown";
             Model = "X";
-            RegNumber = 0;
             Hired = false;
         }
     }
