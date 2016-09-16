@@ -22,28 +22,26 @@ namespace CarRental
             Visable(false);
 
             carList = new System.Collections.ArrayList();
-            Car car = new Car();
 
             carList.Add(new Car() { Make = "Volvo" });
             carList.Add(new Car() { Make = "Opel" });
             carList.Add(new Car() { Make = "Ford" });
         }
 
-        private void btnShowCars_Click(object sender, EventArgs e)
+        private void btnShowAvailableCars_Click(object sender, EventArgs e)
         {
             Visable(false);
             pnlAvailableCars.Visible = true;
-            listBoxAvailableCars.Items.Add(carList);
+            ShowAvailableCars();
         }
 
         private void btnBookCar_Click(object sender, EventArgs e)
         {
-            pnlThankYou.Visible = true;
+            pnlThankYouBooking.Visible = true;
 
             Thread.Sleep(5000);
-
             Visable(false);
-
+            pnlAvailableCars.Visible = true;
         }
 
         private void btnAddCar_Click(object sender, EventArgs e)
@@ -56,8 +54,9 @@ namespace CarRental
         private void btnReturnCar_Click(object sender, EventArgs e)
         {
             Visable(false);
-
             pnlRetunCar.Visible = true;
+
+            ShowAvailableCars();
         }
 
         private void Visable(bool toggle)
@@ -70,7 +69,7 @@ namespace CarRental
 
                 case false:
                     pnlAvailableCars.Visible = false;
-                    pnlThankYou.Visible = false;
+                    pnlThankYouBooking.Visible = false;
                     pnlAddCar.Visible = false;
                     pnlRetunCar.Visible = false;
                     pnlReturnThanks.Visible = false;
@@ -81,12 +80,14 @@ namespace CarRental
             }
         }
 
-        private void ShowCars()
+        private void ShowAvailableCars()
         {
+            listBoxAvailableCars.Items.Clear();
             foreach (var car in carList)
             {
-                listBoxAvailableCars.Items.Add(car.GetType().Name);
+                listBoxAvailableCars.Items.Add(car);
                 listBoxAvailableCars.DisplayMember = "Make";
+
             }
         }
 
