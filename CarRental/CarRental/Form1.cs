@@ -59,30 +59,7 @@ namespace CarRental
                 Hired = false
             });
 
-            // Clears listBoxes before adding new cars to prevent duplicates
-            listBoxAvailableCars.Items.Clear();
-            listBoxAvailableCars.Items.Clear();
-
-            // Adds cars in respective listBoxes
-            foreach (Car car in carList)
-            {
-                switch (car.Hired)
-                {
-                    case false:
-                        listBoxAvailableCars.Items.Add(car);
-                        listBoxAvailableCars.DisplayMember = "Make";
-                        countCars += 1;
-                        break;
-
-                    case true:
-                        listBoxReturnCars.Items.Add(car);
-                        listBoxReturnCars.DisplayMember = "Make";
-                        break;
-                    default:
-                        break;
-                }
-                CountCars();
-            }
+            CheckCars();
         }
 
         // Show and hire cars
@@ -94,9 +71,6 @@ namespace CarRental
         }
         private void btnBookCar_Click(object sender, EventArgs e)
         {
-            firstName = txtFirstName.Text;
-            lastName = txtLastName.Text;
-
             if (listBoxAvailableCars.SelectedIndex != -1)
             {
                 // Sets the car to hired
@@ -128,6 +102,7 @@ namespace CarRental
                 VisiblePanel(false);
                 pnlReturnThanks.Visible = true;
             }
+            CheckCars();
         }
 
         // Add car
@@ -149,6 +124,7 @@ namespace CarRental
             newCar.Hired = false;
 
             carList.Add(newCar);
+            CheckCars();
             CountCars();
 
             txtMake.Text = string.Empty;
@@ -178,11 +154,19 @@ namespace CarRental
             }
         }
 
+        // 
         private void btnShowCustomers_Click(object sender, EventArgs e)
         {
             // Sets all panel to non-visible and sets proper panel to visible
             VisiblePanel(false);
             pnlShowCustomers.Visible = true;
+            foreach (Car car in carList)
+            {
+                if (car.Hired)
+                {
+                    listBoxCustomers.Items.Add(car);
+                }
+            }
         }
 
         // Toogle switch to hide and show panels
@@ -205,12 +189,37 @@ namespace CarRental
             }
         }
 
+        void CheckCars()
+        {
+            // Clears listBoxes before adding new cars to prevent duplicates
+            listBoxReturnCars.Items.Clear();
+            listBoxAvailableCars.Items.Clear();
+
+            // Adds cars in respective listBoxes
+            foreach (Car car in carList)
+            {
+                switch (car.Hired)
+                {
+                    case false:
+                        listBoxAvailableCars.Items.Add(car);
+                        listBoxAvailableCars.DisplayMember = "Make";
+                        countCars += 1;
+                        break;
+
+                    case true:
+                        listBoxReturnCars.Items.Add(car);
+                        listBoxReturnCars.DisplayMember = "Make";
+                        break;
+                    default:
+                        break;
+                }
+                CountCars();
+            }
+        }
+
         void HireCar(bool hired)
         {
             Car car;
-
-            string fullName = string.Format("{0} {1}", firstName, lastName);
-            string bookingInfo = string.Empty;
 
             switch (hired)
             {
@@ -221,23 +230,27 @@ namespace CarRental
                     listBoxReturnCars.Items.RemoveAt(listBoxReturnCars.SelectedIndex);
                     // Adds the car to non-hired list
                     listBoxAvailableCars.Items.Add(car);
-                    listBoxCustomers.Items.Remove(bookingInfo);
                     break;
 
                 case true:
                     // Gets the selected car to "car"
                     car = (Car)listBoxAvailableCars.SelectedItem;
+
+                    car.FirstName = txtFirstName.Text;
+                    car.LastName = txtLastName.Text;
+
                     // Removes chosen car from the list
                     listBoxAvailableCars.Items.RemoveAt(listBoxAvailableCars.SelectedIndex);
                     // Adds the car to hired list
                     listBoxReturnCars.Items.Add(car);
+                    listBoxReturnCars.DisplayMember = "Make";
 
-                    //bookingInfo = string.Format("{0} {1} hired a {2} {3}", firstName, lastName, car.Make, car.Model);
-                    listBoxCustomers.Items.Add(bookingInfo = string.Format("{0} hired a {1} {2}", fullName, car.Make, car.Model));
+                    // Adds the car to "Show Cust.."-pnl
+                    listBoxCustomers.Items.Add(car.ToString());
+
                     break;
             }
             CountCars();
-
         }
 
         void CountCars()
@@ -247,7 +260,5 @@ namespace CarRental
             // Prints the label with updated car count
             lblCountCars.Text = string.Format("We have {0} cars available", countCars);
         }
-
-
     }
 }
