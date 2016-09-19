@@ -14,6 +14,13 @@ namespace CarRental
         public string Seats { get; set; }
         public string Milage { get; set; }
         public bool Hired { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1} hired {2} {3}", FirstName, LastName, Make, Model);
+        }
 
     }
 }
