@@ -38,6 +38,7 @@ namespace CRM
 
             CheckPeople();
             CountPeople();
+            cbRegister.SelectedIndex = 0;
         }
 
         private void cbRegister_SelectedIndexChanged(object sender, EventArgs e)
@@ -253,6 +254,12 @@ namespace CRM
         // Listbox holding all the people
         private void lbPersonList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (lbPersonList.SelectedItem is string)
+            {
+                pnlEditInfo.Visible = false;
+                return;
+            }
+
             // Clears textboxes to avoid pre-filled textboxes
             ClearText("edit");
             pnlEditInfo.Visible = true;
@@ -370,6 +377,8 @@ namespace CRM
         {
 
             lbPersonList.Items.Clear();
+
+            lbPersonList.Items.Add("\nCustomers:");
             foreach (Person person in peopleList)
             {
                 if (person is Customer)
@@ -377,7 +386,8 @@ namespace CRM
                     lbPersonList.Items.Add(person);
                 }
             }
-
+            lbPersonList.Items.Add(string.Empty);
+            lbPersonList.Items.Add("\nEmployees:");
             foreach (Person person in peopleList)
             {
                 if (person is Employee)
@@ -386,6 +396,8 @@ namespace CRM
                 }
             }
 
+            lbPersonList.Items.Add(string.Empty);
+            lbPersonList.Items.Add("\nSuppliers:");
             foreach (Person person in peopleList)
             {
                 if (person is Supplier)
