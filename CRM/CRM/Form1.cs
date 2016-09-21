@@ -30,6 +30,7 @@ namespace CRM
 
             peopleList = new System.Collections.ArrayList();
 
+            // Adds choices for combobox
             cbRegister.Items.Add(new ComboboxItem() { Text = "<Select an option>", Value = 0 });
             cbRegister.Items.Add(new ComboboxItem() { Text = "Customer", Value = 1 });
             cbRegister.Items.Add(new ComboboxItem() { Text = "Employee", Value = 2 });
@@ -50,6 +51,7 @@ namespace CRM
         {
             ComboboxItem item = (ComboboxItem)cbRegister.SelectedItem;
 
+            // Checks if all necessary textboxes have been filled
             bool hasValue = true;
             for (int i = 0; i < pnlEnterInfo.Controls.Count; i++)
             {
@@ -62,6 +64,7 @@ namespace CRM
                     
                     switch (item.Value)
                     {
+                        // Skips unnecessary textboxes for Customer
                         case 1:
                             if (txt.Name == "txtTitle" || txt.Name == "txtSalary" || txt.Name == "txtCompany")
                             {
@@ -69,6 +72,7 @@ namespace CRM
                             }
                             break;
 
+                        // Skips unnecessary textboxes for Employee
                         case 2:
                             if (txt.Name == "txtCompany")
                             {
@@ -76,6 +80,7 @@ namespace CRM
                             }
                             break;
 
+                        // Skips unnecessary textboxes for Supplier
                         case 3:
                             if (txt.Name == "txtSalary" || txt.Name == "txtTitle")
                             {
@@ -98,16 +103,18 @@ namespace CRM
                 }
 
             }
+
+            // Alerts user if there are empty textboxes
             if (!hasValue)
             {
-                MessageBox.Show("Textboxes are missing values");
+                MessageBox.Show("Textboxes are missing values", "Alert");
                 return;
             }
-
             
-
+            // Sets right case according to choosen comboboxitem
             switch (item.Value)
             {
+                //  Adds a customer
                 case 1:
                     peopleList.Add(new Customer()
                     {
@@ -120,6 +127,7 @@ namespace CRM
                     customerCount++;
                     break;
 
+                //  Adds an employee
                 case 2:
                     peopleList.Add(new Employee(employeeID)
                     {
@@ -134,6 +142,7 @@ namespace CRM
                     employeeCount++;
                     break;
 
+                // Adds a upplier
                 case 3:
                     peopleList.Add(new Supplier()
                     {
@@ -153,6 +162,7 @@ namespace CRM
             CheckPeople();
             ClearText("enter");
         }
+        // Forces user to enter numbers in textboxes "phonenumber" and "Salary"
         private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
@@ -172,6 +182,7 @@ namespace CRM
             }
         }
 
+        // Initialzes some "people"
         private Customer customer; 
         private Employee employee;
         private Supplier supplier;
@@ -179,23 +190,24 @@ namespace CRM
         // Save button for edit panel
         private void btnSaveEdit_Click(object sender, EventArgs e)
         {
-
-
-
             ClearText("edit");
             Person person = (Person)lbPersonList.SelectedItem;
 
+            // Saves info in the common textboxes
             person.FirstName = txtFirstNameEdit.Text;
             person.LastName = txtLastNameEdit.Text;
             person.PhoneNumber = txtPhoneNumberEdit.Text;
 
+            // Checks which type person is
             switch (person.GetType().Name)
             {
+                // Saves the info from the extra textboxes 
                 case "Employee":
                     employee.Salary = txtSalaryEdit.Text;
                     employee.Title = txtTitleEdit.Text;
                     break;
 
+                // Saves the info from the extra textboxes 
                 case "Supplier":
                     supplier.Company = txtCompanyEdit.Text;
                     break;
@@ -207,8 +219,9 @@ namespace CRM
 
             CheckPeople();
         }
+        // Forces user to enter numbers in textboxes "phonenumber" and "Salary"
         private void txtPhoneNumberEdit_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        { 
             char ch = e.KeyChar;
             if (!char.IsDigit(ch) && ch != 8)
             {
@@ -237,23 +250,28 @@ namespace CRM
             ClearText("edit");
         }
 
+        // Listbox holding all the people
         private void lbPersonList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Clears textboxes to avoid pre-filled textboxes
             ClearText("edit");
             pnlEditInfo.Visible = true;
+            // Sets peron to the choosen listboxitem
             Person person = (Person)lbPersonList.SelectedItem;
 
+            // Sets saved info into the common textboxes
             txtFirstNameEdit.Text = person.FirstName;
             txtLastNameEdit.Text = person.LastName;
             txtPhoneNumberEdit.Text = person.PhoneNumber;
 
             switch (person.GetType().Name)
             {
+                // Sets info in to the right textbox
                 case "Customer":
                     GetPersonType(4);
-                    
                     break;
 
+                // Sets info in to the right textbox
                 case "Employee":
                     GetPersonType(5);
 
@@ -263,6 +281,7 @@ namespace CRM
                     txtTitleEdit.Text = employee.Title;
                     break;
 
+                // Sets info in to the right textbox
                 case "Supplier":
                     GetPersonType(6);
 
@@ -276,6 +295,7 @@ namespace CRM
             }
         }
 
+        // Sets the proper textboxes to readable and opens panels
         void GetPersonType(int value)
         {
             // Used to set all textboxes to readonly when changing "input"
@@ -345,6 +365,7 @@ namespace CRM
             }
         }
 
+        //Updates listbox
         void CheckPeople()
         {
 
@@ -375,6 +396,7 @@ namespace CRM
             CountPeople();
         }
 
+        // Control for GUI
         void GUI(bool visible)
         {
             // Check if bool is empty and terminate
@@ -399,6 +421,7 @@ namespace CRM
             txtTitleEdit.ReadOnly = !visible;
         }
 
+        // Clears text in textboxes
         void ClearText(string clear)
         {
             switch (clear)
@@ -427,6 +450,7 @@ namespace CRM
             }
         }
 
+        // Count the number of people in respective gruops
         void CountPeople()
         {
             int number = lbPersonList.Items.Count;

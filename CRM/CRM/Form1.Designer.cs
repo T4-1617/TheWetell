@@ -408,11 +408,10 @@
             // 
             this.lblCountingPeople.AutoSize = true;
             this.lblCountingPeople.Font = new System.Drawing.Font("Arial", 12F);
-            this.lblCountingPeople.Location = new System.Drawing.Point(50, 306);
+            this.lblCountingPeople.Location = new System.Drawing.Point(72, 306);
             this.lblCountingPeople.Name = "lblCountingPeople";
-            this.lblCountingPeople.Size = new System.Drawing.Size(466, 18);
+            this.lblCountingPeople.Size = new System.Drawing.Size(0, 18);
             this.lblCountingPeople.TabIndex = 5;
-            this.lblCountingPeople.Text = "You have registered 0 customer(s), 0 Employee(s) and 0 supplier(s).";
             // 
             // CRM
             // 
