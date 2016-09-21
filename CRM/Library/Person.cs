@@ -10,7 +10,7 @@ namespace Library
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public virtual string FullName
         {
@@ -23,11 +23,23 @@ namespace Library
         public int CustomerID { get; set; }
     }
 
-    public class Emplyee : Person
+    public class Employee : Person
     {
-        public int EmployeeID { get; set; }
+        public string EmployeeID(int ID)
+        {
+            if (ID <= 9)
+            {
+                return string.Format("0{0}", ID);
+            }
+            else
+            {
+                return string.Format("{}", ID);
+            }
+        }
         public string Title { get; set; }
-        public int Salary { get; set; }
+        public string Salary { get; set; }
+
+
     }
 
     public class Supplier : Person

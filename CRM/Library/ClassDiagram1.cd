@@ -18,7 +18,7 @@
       <FileName>Person.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Library.Emplyee">
+  <Class Name="Library.Employee">
     <Position X="4" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAACAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
