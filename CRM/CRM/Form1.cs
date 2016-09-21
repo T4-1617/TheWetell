@@ -19,6 +19,10 @@ namespace CRM
 
         int employeeID = 1;
 
+        int customerCount = 0;
+        int employeeCount = 0;
+        int supplierCount = 0;
+
         public CRM()
         {
             InitializeComponent();
@@ -29,6 +33,9 @@ namespace CRM
             cbRegister.Items.Add(new ComboboxItem() { Text = "Customer", Value = 1 });
             cbRegister.Items.Add(new ComboboxItem() { Text = "Employee", Value = 2 });
             cbRegister.Items.Add(new ComboboxItem() { Text = "Supplier", Value = 3 });
+
+            CheckPeople();
+            CountPeople();
         }
 
         private void cbRegister_SelectedIndexChanged(object sender, EventArgs e)
@@ -37,6 +44,7 @@ namespace CRM
             GetPersonType(item.Value);
         }
 
+        // Save button for regestration panel
         private void btnSaveReg_Click(object sender, EventArgs e)
         {
             ComboboxItem item = (ComboboxItem)cbRegister.SelectedItem;
@@ -51,6 +59,8 @@ namespace CRM
                         PhoneNumber = txtPhoneNumber.Text,
                         CustomerID = r.Next(0, 500)
                     });
+
+                    customerCount++;
                     break;
 
                 case 2:
@@ -62,8 +72,9 @@ namespace CRM
                         Salary = txtSalary.Text,
                         Title = txtTitle.Text,
                     });
-
                     employeeID++;
+
+                    employeeCount++;
                     break;
 
                 case 3:
@@ -74,6 +85,8 @@ namespace CRM
                         PhoneNumber = txtPhoneNumber.Text,
                         Company = txtCompany.Text
                     });
+
+                    supplierCount++;
                     break;
 
                 default:
@@ -101,6 +114,7 @@ namespace CRM
             }
         }
 
+        // Save button for edit panel 
         private void btnSaveEdit_Click(object sender, EventArgs e)
         {
             CheckPeople();
@@ -128,6 +142,7 @@ namespace CRM
         // Cancel buttons clear textboxes in respective panles
         private void btnCancelReg_Click(object sender, EventArgs e)
         {
+
             ClearText("enter");
         }
         private void btnCancelEdit_Click(object sender, EventArgs e)
@@ -137,7 +152,26 @@ namespace CRM
 
         private void lbPersonList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pnlEditInfo.Visible = true;
+            Person person = (Person)lbPersonList.SelectedItem;
 
+            switch (person.GetType().Name)
+            {
+                case "Customer":
+                    GetPersonType(4);
+                    break;
+
+                case "Employee":
+                    GetPersonType(5);
+                    break;
+
+                case "Supplier":
+                    GetPersonType(6);
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         void GetPersonType(int value)
@@ -147,7 +181,6 @@ namespace CRM
 
             // These textboxes are common and is used for everyone
             // Changes all "common" textboxes to readable
-            pnlEnterInfo.Visible = true;
 
             txtFirstName.ReadOnly = false;
             txtFirstNameEdit.ReadOnly = false;
@@ -158,21 +191,39 @@ namespace CRM
 
             switch (value)
             {
-                case 0:
-                    GUI(false);
+                // Case when choosing "Customer"
+                case 1:
                     pnlEnterInfo.Visible = true;
                     break;
+
                 // Case when choosing "Employee"
                 case 2:
+                    pnlEnterInfo.Visible = true;
+
                     txtTitle.ReadOnly = false;
-                    txtTitleEdit.ReadOnly = false;
                     txtSalary.ReadOnly = false;
-                    txtSalaryEdit.ReadOnly = false;
                     break;
 
                 //Case when choosing "Supplier" 
                 case 3:
+                    pnlEnterInfo.Visible = true;
+
                     txtCompany.ReadOnly = false;
+                    break;
+
+                case 4:
+                    pnlEditInfo.Visible = true;
+                    break;
+
+                case 5:
+                    pnlEditInfo.Visible = true;
+                    txtTitleEdit.ReadOnly = false;
+                    txtSalaryEdit.ReadOnly = false;
+                    break;
+
+                case 6:
+                    pnlEditInfo.Visible = true;
+
                     txtCompanyEdit.ReadOnly = false;
                     break;
 
@@ -183,28 +234,32 @@ namespace CRM
 
         void CheckPeople()
         {
+
+            lbPersonList.Items.Clear();
             foreach (Person person in peopleList)
             {
-                switch (person.GetType().Name)
+                if (person is Customer)
                 {
-                    case "Customer":
-                        lbPersonList.Items.Add(person);
-                        lbPersonList.DisplayMember = "FullName";
-                        break;
-
-                    case "Employee":
-                        lbPersonList.Items.Add(person);
-                        lbPersonList.DisplayMember = "FullName";
-                        break;
-
-                    case "Supplier":
-                        lbPersonList.Items.Add(person);
-                        lbPersonList.DisplayMember = "FullName";
-                        break;
-                    default:
-                        break;
+                    lbPersonList.Items.Add(person);
                 }
             }
+
+            foreach (Person person in peopleList)
+            {
+                if (person is Employee)
+                {
+                    lbPersonList.Items.Add(person);
+                }
+            }
+
+            foreach (Person person in peopleList)
+            {
+                if (person is Supplier)
+                {
+                    lbPersonList.Items.Add(person);
+                }
+            }
+            CountPeople();
         }
 
         void GUI(bool visible)
@@ -261,6 +316,11 @@ namespace CRM
             }
         }
 
-
+        void CountPeople()
+        {
+            int number = lbPersonList.Items.Count;
+            lblCountingPeople.Text = string.Format("You have registered {0} customer(s), {1} Employee(s) and {2} supplier(s).",
+                customerCount, employeeCount, supplierCount);
+        }
     }
 }
