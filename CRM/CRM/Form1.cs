@@ -22,18 +22,37 @@ namespace CRM
             GUI(false);
 
             peopleList = new System.Collections.ArrayList();
-            cbRegister.Focus();
 
-            ComboboxItem customer = new ComboboxItem() { Text = "Customer", Value = 1 };
-            ComboboxItem employee = new ComboboxItem() { Text = "Employee", Value = 2 };
-            ComboboxItem supplier = new ComboboxItem() { Text = "Supplier", Value = 3 };
+            cbRegister.Items.Add(new ComboboxItem() { Text = "Customer", Value = 1 });
+            cbRegister.Items.Add(new ComboboxItem() { Text = "Employee", Value = 2 });
+            cbRegister.Items.Add(new ComboboxItem() { Text = "Supplier", Value = 3 });
+        }
 
+        private void cbRegister_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboboxItem item = (ComboboxItem)cbRegister.SelectedItem;
+            GetPersonType(item.Value);
+        }
+
+        private void btnSaveReg_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelReg_Click(object sender, EventArgs e)
+        {
+            ClearText("enter");
         }
 
         void GetPersonType(int value)
         {
+            // Used to set all textboxes to readonly when changing "input"
+            GUI(false);
+
             // These textboxes are common and is used for everyone
             // Changes all "common" textboxes to readable
+            pnlEnterInfo.Visible = true;
+
             txtFirstName.ReadOnly = false;
             txtFirstNameEdit.ReadOnly = false;
             txtLastName.ReadOnly = false;
@@ -43,6 +62,10 @@ namespace CRM
 
             switch (value)
             {
+                case 0:
+                    GUI(false);
+                    pnlEnterInfo.Visible = true;
+                    break;
                 // Case when choosing "Employee"
                 case 2:
                     txtTitle.ReadOnly = false;
@@ -71,19 +94,49 @@ namespace CRM
 
             // Sets all textboxes to read only
 
-            txtFirstName.ReadOnly = true;
-            txtLastName.ReadOnly = true;
-            txtPhoneNumber.ReadOnly = true;
-            txtSalary.ReadOnly = true;
-            txtCompany.ReadOnly = true;
-            txtTitle.ReadOnly = true;
+            txtFirstName.ReadOnly = !visible;
+            txtLastName.ReadOnly = !visible;
+            txtPhoneNumber.ReadOnly = !visible;
+            txtSalary.ReadOnly = !visible;
+            txtCompany.ReadOnly = !visible;
+            txtTitle.ReadOnly = !visible;
 
-            txtFirstNameEdit.ReadOnly = true;
-            txtLastNameEdit.ReadOnly = true;
-            txtPhoneNumberEdit.ReadOnly = true;
-            txtSalaryEdit.ReadOnly = true;
-            txtCompanyEdit.ReadOnly = true;
-            txtTitleEdit.ReadOnly = true; 
+            txtFirstNameEdit.ReadOnly = !visible;
+            txtLastNameEdit.ReadOnly = !visible;
+            txtPhoneNumberEdit.ReadOnly = !visible;
+            txtSalaryEdit.ReadOnly = !visible;
+            txtCompanyEdit.ReadOnly = !visible;
+            txtTitleEdit.ReadOnly = !visible;
+        }
+
+        void ClearText(string clear)
+        {
+            switch (clear)
+            {
+                case "enter":
+                    txtFirstName.Clear();
+                    txtLastName.Clear();
+                    txtPhoneNumber.Clear();
+                    txtSalary.Clear();
+                    txtCompany.Clear();
+                    txtTitle.Clear();
+
+                    GetPersonType(0);
+                    break;
+
+                case "edit":
+                    txtFirstNameEdit.Clear();
+                    txtLastNameEdit.Clear();
+                    txtPhoneNumberEdit.Clear();
+                    txtSalaryEdit.Clear();
+                    txtCompanyEdit.Clear();
+                    txtTitleEdit.Clear();
+
+                    GetPersonType(0);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

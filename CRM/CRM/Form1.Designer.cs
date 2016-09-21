@@ -82,10 +82,12 @@
             // 
             this.cbRegister.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRegister.FormattingEnabled = true;
+            this.cbRegister.IntegralHeight = false;
             this.cbRegister.Location = new System.Drawing.Point(263, 24);
             this.cbRegister.Name = "cbRegister";
             this.cbRegister.Size = new System.Drawing.Size(319, 21);
             this.cbRegister.TabIndex = 1;
+            this.cbRegister.SelectedIndexChanged += new System.EventHandler(this.cbRegister_SelectedIndexChanged);
             // 
             // pnlRegistration
             // 
@@ -228,6 +230,7 @@
             this.btnCancelReg.TabIndex = 1;
             this.btnCancelReg.Text = "Cancel";
             this.btnCancelReg.UseVisualStyleBackColor = true;
+            this.btnCancelReg.Click += new System.EventHandler(this.btnCancelReg_Click);
             // 
             // btnSaveReg
             // 
@@ -238,6 +241,7 @@
             this.btnSaveReg.TabIndex = 0;
             this.btnSaveReg.Text = "Save";
             this.btnSaveReg.UseVisualStyleBackColor = true;
+            this.btnSaveReg.Click += new System.EventHandler(this.btnSaveReg_Click);
             // 
             // lbPersonList
             // 
