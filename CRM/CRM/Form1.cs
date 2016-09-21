@@ -30,6 +30,7 @@ namespace CRM
 
             peopleList = new System.Collections.ArrayList();
 
+            cbRegister.Items.Add(new ComboboxItem() { Text = "<Select an option>", Value = 0 });
             cbRegister.Items.Add(new ComboboxItem() { Text = "Customer", Value = 1 });
             cbRegister.Items.Add(new ComboboxItem() { Text = "Employee", Value = 2 });
             cbRegister.Items.Add(new ComboboxItem() { Text = "Supplier", Value = 3 });
@@ -48,6 +49,62 @@ namespace CRM
         private void btnSaveReg_Click(object sender, EventArgs e)
         {
             ComboboxItem item = (ComboboxItem)cbRegister.SelectedItem;
+
+            bool hasValue = true;
+            for (int i = 0; i < pnlEnterInfo.Controls.Count; i++)
+            {
+                TextBox txt;
+                if (pnlEnterInfo.Controls[i] is TextBox)
+                {
+                    txt = (TextBox)pnlEnterInfo.Controls[i];
+
+                    bool skip = false;
+                    
+                    switch (item.Value)
+                    {
+                        case 1:
+                            if (txt.Name == "txtTitle" || txt.Name == "txtSalary" || txt.Name == "txtCompany")
+                            {
+                                skip = true;
+                            }
+                            break;
+
+                        case 2:
+                            if (txt.Name == "txtCompany")
+                            {
+                                skip = true;
+                            }
+                            break;
+
+                        case 3:
+                            if (txt.Name == "txtSalary" || txt.Name == "txtTitle")
+                            {
+                                skip = true;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if (!skip)
+                    {
+                        if (txt.Text == string.Empty)
+                        {
+                            hasValue = false;
+                            break;
+                        }
+                    }
+                    
+                }
+
+            }
+            if (!hasValue)
+            {
+                MessageBox.Show("Textboxes are missing values");
+                return;
+            }
+
+            
 
             switch (item.Value)
             {
@@ -92,6 +149,7 @@ namespace CRM
                 default:
                     break;
             }
+            cbRegister.SelectedIndex = 0;
             CheckPeople();
             ClearText("enter");
         }
@@ -114,12 +172,16 @@ namespace CRM
             }
         }
 
-        // Save button for edit panel
         private Customer customer; 
         private Employee employee;
         private Supplier supplier;
+       
+        // Save button for edit panel
         private void btnSaveEdit_Click(object sender, EventArgs e)
         {
+
+
+
             ClearText("edit");
             Person person = (Person)lbPersonList.SelectedItem;
 
@@ -139,6 +201,7 @@ namespace CRM
                     break;
 
                 default:
+                    MessageBox.Show("Choose an option", "Alert");
                     break;
             }
 
