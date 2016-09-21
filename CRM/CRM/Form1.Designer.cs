@@ -301,6 +301,7 @@
             this.btnCancelEdit.TabIndex = 4;
             this.btnCancelEdit.Text = "Cancel";
             this.btnCancelEdit.UseVisualStyleBackColor = true;
+            this.btnCancelEdit.Click += new System.EventHandler(this.btnCancelEdit_Click);
             // 
             // label6
             // 
@@ -328,6 +329,7 @@
             this.btnSaveEdit.TabIndex = 4;
             this.btnSaveEdit.Text = "Save";
             this.btnSaveEdit.UseVisualStyleBackColor = true;
+            this.btnSaveEdit.Click += new System.EventHandler(this.btnSaveEdit_Click);
             // 
             // label7
             // 

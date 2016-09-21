@@ -38,10 +38,18 @@ namespace CRM
         {
 
         }
+        private void btnSaveEdit_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnCancelReg_Click(object sender, EventArgs e)
         {
             ClearText("enter");
+        }
+        private void btnCancelEdit_Click(object sender, EventArgs e)
+        {
+            ClearText("edit");
         }
 
         void GetPersonType(int value)
@@ -138,5 +146,6 @@ namespace CRM
                     break;
             }
         }
+
     }
 }
