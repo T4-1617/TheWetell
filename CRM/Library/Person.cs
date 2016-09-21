@@ -12,9 +12,9 @@ namespace Library
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
 
-        public virtual string FullName
+        public override string ToString()
         {
-            get { return string.Format("{0} {1}", FirstName, LastName); }
+            return string.Format("{0} {1}", FirstName, LastName);
         }
     }
 
