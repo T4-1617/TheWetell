@@ -139,6 +139,7 @@
             this.txtSalary.Name = "txtSalary";
             this.txtSalary.Size = new System.Drawing.Size(111, 20);
             this.txtSalary.TabIndex = 18;
+            this.txtSalary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalary_KeyPress);
             // 
             // label11
             // 
@@ -156,6 +157,7 @@
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(111, 20);
             this.txtPhoneNumber.TabIndex = 4;
+            this.txtPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhoneNumber_KeyPress);
             // 
             // label4
             // 
@@ -252,6 +254,7 @@
             this.lbPersonList.Name = "lbPersonList";
             this.lbPersonList.Size = new System.Drawing.Size(180, 202);
             this.lbPersonList.TabIndex = 3;
+            this.lbPersonList.SelectedIndexChanged += new System.EventHandler(this.lbPersonList_SelectedIndexChanged);
             // 
             // pnlEditInfo
             // 
@@ -281,6 +284,7 @@
             this.txtPhoneNumberEdit.Name = "txtPhoneNumberEdit";
             this.txtPhoneNumberEdit.Size = new System.Drawing.Size(113, 20);
             this.txtPhoneNumberEdit.TabIndex = 10;
+            this.txtPhoneNumberEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhoneNumberEdit_KeyPress);
             // 
             // label8
             // 
@@ -367,6 +371,7 @@
             this.txtSalaryEdit.Name = "txtSalaryEdit";
             this.txtSalaryEdit.Size = new System.Drawing.Size(113, 20);
             this.txtSalaryEdit.TabIndex = 8;
+            this.txtSalaryEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalaryEdit_KeyPress);
             // 
             // txtLastNameEdit
             // 
@@ -407,7 +412,7 @@
             this.lblCountingPeople.Name = "lblCountingPeople";
             this.lblCountingPeople.Size = new System.Drawing.Size(466, 18);
             this.lblCountingPeople.TabIndex = 5;
-            this.lblCountingPeople.Text = "You have registered 0 customer(s), 0 emplyee(s) and 0 supplier(s).";
+            this.lblCountingPeople.Text = "You have registered 0 customer(s), 0 Employee(s) and 0 supplier(s).";
             // 
             // CRM
             // 

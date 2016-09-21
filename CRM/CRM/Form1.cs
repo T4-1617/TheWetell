@@ -15,6 +15,9 @@ namespace CRM
     {
 
         System.Collections.ArrayList peopleList;
+        Random r = new Random();
+
+        int employerID = 1;
 
         public CRM()
         {
@@ -36,13 +39,96 @@ namespace CRM
 
         private void btnSaveReg_Click(object sender, EventArgs e)
         {
+            ComboboxItem item = (ComboboxItem)cbRegister.SelectedItem;
 
+            switch (item.Value)
+            {
+                case 1:
+                    Customer newCus = new Customer();
+
+                    newCus.FirstName = txtFirstName.Text;
+                    newCus.LastName = txtLastName.Text;
+                    newCus.PhoneNumber = txtPhoneNumber.Text;
+                    newCus.CustomerID = r.Next(0, 500);
+
+                    peopleList.Add(newCus);
+                    break;
+
+                case 2:
+                    Employee newEmp = new Employee();
+
+                    newEmp.FirstName = txtFirstName.Text;
+                    newEmp.LastName = txtLastName.Text;
+                    newEmp.PhoneNumber = txtPhoneNumber.Text;
+                    newEmp.Salary = txtSalary.Text;
+                    newEmp.Title = txtTitle.Text;
+                    newEmp.EmployeeID(employerID);
+                    employerID++;
+
+                    peopleList.Add(newEmp);
+                    break;
+
+                case 3:
+                    Supplier newSup = new Supplier();
+
+                    newSup.FirstName = txtFirstName.Text;
+                    newSup.LastName = txtLastName.Text;
+                    newSup.PhoneNumber = txtPhoneNumber.Text;
+                    newSup.Company = txtCompany.Text;
+
+                    peopleList.Add(newSup);
+                    break;
+
+                default:
+                    break;
+            }
+            CheckPeople();
+            ClearText("enter");
         }
+        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show("Enter a phone number:", "Alert");
+            }
+        }
+        private void txtSalary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show("Enter a number", "Alert");
+            }
+        }
+
         private void btnSaveEdit_Click(object sender, EventArgs e)
         {
-
+            CheckPeople();
+            ClearText("edit");
+        }
+        private void txtPhoneNumberEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show("Enter a number", "Alert");
+            }
+        }
+        private void txtSalaryEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show("Enter a number", "Alert");
+            }
         }
 
+        // Cancel buttons clear textboxes in respective panles
         private void btnCancelReg_Click(object sender, EventArgs e)
         {
             ClearText("enter");
@@ -50,6 +136,11 @@ namespace CRM
         private void btnCancelEdit_Click(object sender, EventArgs e)
         {
             ClearText("edit");
+        }
+
+        private void lbPersonList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         void GetPersonType(int value)
@@ -90,6 +181,32 @@ namespace CRM
 
                 default:
                     break;
+            }
+        }
+
+        void CheckPeople()
+        {
+            foreach (Person person in peopleList)
+            {
+                switch (person.GetType().Name)
+                {
+                    case "Customer":
+                        lbPersonList.Items.Add(person);
+                        lbPersonList.DisplayMember = "FullName";
+                        break;
+
+                    case "Employee":
+                        lbPersonList.Items.Add(person);
+                        lbPersonList.DisplayMember = "FullName";
+                        break;
+
+                    case "Supplier":
+                        lbPersonList.Items.Add(person);
+                        lbPersonList.DisplayMember = "FullName";
+                        break;
+                    default:
+                        break;
+                }   
             }
         }
 
@@ -146,6 +263,7 @@ namespace CRM
                     break;
             }
         }
+
 
     }
 }
