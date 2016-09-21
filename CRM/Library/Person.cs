@@ -25,6 +25,18 @@ namespace Library
 
     public class Employee : Person
     {
+        public Employee(int ID)
+        {
+            if (ID <= 9)
+            {
+                this.ID = string.Format("0{0}", ID);
+            }
+            else
+            {
+                this.ID = string.Format("{}", ID);
+            }
+        }
+
         public string EmployeeID(int ID)
         {
             if (ID <= 9)
@@ -38,6 +50,7 @@ namespace Library
         }
         public string Title { get; set; }
         public string Salary { get; set; }
+        public string ID { get; set; }
 
 
     }

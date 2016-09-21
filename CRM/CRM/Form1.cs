@@ -17,7 +17,7 @@ namespace CRM
         System.Collections.ArrayList peopleList;
         Random r = new Random();
 
-        int employerID = 1;
+        int employeeID = 1;
 
         public CRM()
         {
@@ -44,39 +44,36 @@ namespace CRM
             switch (item.Value)
             {
                 case 1:
-                    Customer newCus = new Customer();
-
-                    newCus.FirstName = txtFirstName.Text;
-                    newCus.LastName = txtLastName.Text;
-                    newCus.PhoneNumber = txtPhoneNumber.Text;
-                    newCus.CustomerID = r.Next(0, 500);
-
-                    peopleList.Add(newCus);
+                    peopleList.Add(new Customer()
+                    {
+                        FirstName = txtFirstName.Text,
+                        LastName = txtLastName.Text,
+                        PhoneNumber = txtPhoneNumber.Text,
+                        CustomerID = r.Next(0, 500)
+                    });
                     break;
 
                 case 2:
-                    Employee newEmp = new Employee();
+                    peopleList.Add(new Employee(employeeID)
+                    {
+                        FirstName = txtFirstName.Text,
+                        LastName = txtLastName.Text,
+                        PhoneNumber = txtPhoneNumber.Text,
+                        Salary = txtSalary.Text,
+                        Title = txtTitle.Text,
+                    });
 
-                    newEmp.FirstName = txtFirstName.Text;
-                    newEmp.LastName = txtLastName.Text;
-                    newEmp.PhoneNumber = txtPhoneNumber.Text;
-                    newEmp.Salary = txtSalary.Text;
-                    newEmp.Title = txtTitle.Text;
-                    newEmp.EmployeeID(employerID);
-                    employerID++;
-
-                    peopleList.Add(newEmp);
+                    employeeID++;
                     break;
 
                 case 3:
-                    Supplier newSup = new Supplier();
-
-                    newSup.FirstName = txtFirstName.Text;
-                    newSup.LastName = txtLastName.Text;
-                    newSup.PhoneNumber = txtPhoneNumber.Text;
-                    newSup.Company = txtCompany.Text;
-
-                    peopleList.Add(newSup);
+                    peopleList.Add(new Supplier()
+                    {
+                        FirstName = txtFirstName.Text,
+                        LastName = txtLastName.Text,
+                        PhoneNumber = txtPhoneNumber.Text,
+                        Company = txtCompany.Text
+                    });
                     break;
 
                 default:
@@ -206,7 +203,7 @@ namespace CRM
                         break;
                     default:
                         break;
-                }   
+                }
             }
         }
 
