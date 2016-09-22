@@ -8,6 +8,15 @@ namespace OnlineBooking
 {
     class Customer
     {
-        System.Collections.ArrayList Accounts;
+        //System.Collections.ArrayList Accounts;
+
+        public string CustomerName { get; set; }
+    }
+
+    class Account : Customer
+    {
+        public string AccountName { get; set; }
+        public int AccountID { get; set; }
+        public int Balance { get; set; }
     }
 }
