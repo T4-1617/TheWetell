@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace OnlineBooking
 {
+
+    class Employee
+    {
+
+    }
+
     class Customer
     {
         //System.Collections.ArrayList Accounts;
