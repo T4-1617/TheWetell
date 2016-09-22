@@ -189,6 +189,7 @@
             this.lbxUserAccounts.Name = "lbxUserAccounts";
             this.lbxUserAccounts.Size = new System.Drawing.Size(120, 164);
             this.lbxUserAccounts.TabIndex = 10;
+            this.lbxUserAccounts.SelectedIndexChanged += new System.EventHandler(this.lbxUserAccounts_SelectedIndexChanged);
             // 
             // label2
             // 

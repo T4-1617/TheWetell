@@ -40,12 +40,31 @@ namespace OnlineBooking
 
             cbxSelectUser.SelectedIndex = 0;
 
-            CheckUsers();
+            pnlCustomerButtons.Visible = false;
         }
 
         private void cbxSelectUser_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            switch (cbxSelectUser.Text)
+            {
+                case "Customer":
+                    CheckUsers();
+                    break;
+                case "Employee":
+                    CheckUsers();
+                    break;
+                default:
+                    break;
+            }
+            if (cbxSelectUser.Text == "Customer")
+            {
+                pnlCustomerButtons.Visible = true;
+            }
+            else
+            {
+                pnlCustomerButtons.Visible = false;
+            }
         }
 
         void CheckUsers()
@@ -74,10 +93,17 @@ namespace OnlineBooking
             }
         }
 
+        //void 
+
         private void lbxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             Customer customer = (Customer)lbxUsers.SelectedItem;
             CheckAccounts();
+        }
+
+        private void lbxUserAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
