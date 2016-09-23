@@ -36,7 +36,7 @@ namespace OnlineBooking
 
             cbxSelectUser.SelectedIndex = 0;
 
-            GUI(); 
+            GUI();
         }
 
         private void cbxSelectUser_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,8 +69,8 @@ namespace OnlineBooking
 
         void CheckAccounts()
         {
-            Customer customer = (Customer)lbxUsers.SelectedItem;
             lbxUserAccounts.Items.Clear();
+            Customer customer = (Customer)lbxUsers.SelectedItem;
             foreach (Account account in customer.GetAllAccounts())
             {
                 lbxUserAccounts.Items.Add(account);
@@ -143,13 +143,50 @@ namespace OnlineBooking
             }
             else
             {
-                MessageBox.Show(string.Format("Can't withdraw {0} from account.", number));
+                MessageBox.Show(string.Format("Can't withdraw {0} from account.", number), "Alert");
+            }
+        }
+
+        bool OpenAccount()
+        {
+            Customer customer = (Customer)lbxUsers.SelectedItem;
+
+            int deposit;
+            deposit = Convert.ToInt32(tbxAddAccount.Text);
+            deposit = int.Parse(tbxAddAccount.Text);
+
+
+            if (customer.CreateAccount(deposit) == true)
+            {
+                customer.CreateAccount(deposit);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void btnOpenAccount_Click(object sender, EventArgs e)
+        {
+            GUI();
+            pnlOpenNewAccount.Visible = true;
+        }
+
+        private void btnAddAccount_Click(object sender, EventArgs e)
+        {
+            Customer customer = (Customer)lbxUsers.SelectedItem;
+
+            if (OpenAccount())
+            {
+                OpenAccount();
+                GUI();
             }
         }
 
         private void lbxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Customer customer = (Customer)lbxUsers.SelectedItem;
+            btnOpenAccount.Visible = true;
             CheckAccounts();
         }
 
@@ -158,7 +195,6 @@ namespace OnlineBooking
             if (cbxSelectUser.Text == "Customer" && lbxUserAccounts.SelectedItem is Account)
             {
                 pnlCustomerButtons.Visible = true;
-                btnOpenAccount.Visible = true;
             }
         }
 
@@ -195,9 +231,5 @@ namespace OnlineBooking
 
         }
 
-        private void btnOpenAccount_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -132,6 +132,7 @@
             this.btnAddAccount.TabIndex = 0;
             this.btnAddAccount.Text = "Confirm opening new account";
             this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
             // pnlCustomerButtons
             // 
@@ -349,6 +350,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(859, 616);
+            this.Controls.Add(this.pnlOpenNewAccount);
             this.Controls.Add(this.pnlAddCash);
             this.Controls.Add(this.pnlWithdrawCash);
             this.Controls.Add(this.pnlBalance);
@@ -359,7 +361,6 @@
             this.Controls.Add(this.btnInvolement);
             this.Controls.Add(this.btnOpenAccount);
             this.Controls.Add(this.pnlCustomerButtons);
-            this.Controls.Add(this.pnlOpenNewAccount);
             this.Controls.Add(this.cbxSelectUser);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
