@@ -18,16 +18,30 @@ namespace OnlineBooking
         public string Name { get; set; }
         public int ID { get; set; }
 
-        //private ArrayList Accounts { get; set; }
-        //public Customer()
-        //{
-        //    Accounts = new ArrayList();
-        //}
+        private ArrayList accounts { get; set; }
 
-        //public void CreateAccount()
-        //{
-        //    Accounts.Add(new Account() { AccountName = "Account", Balance = r.Next(1000, 5000), ID = 11 });
-        //}
+        public Customer()
+        {
+            accounts = new ArrayList();
+        }
+
+        public Account GetAccount(int accountIndex)
+        {
+            return (Account)accounts[accountIndex];
+        }
+
+        public ArrayList GetAllAccounts()
+        {
+            return accounts;
+        }
+
+        public void CreateAccount(int initialDeposit)
+        {
+            if (initialDeposit >= 1000)
+            {
+                accounts.Add(new Account(initialDeposit));
+            }
+        }
 
         public override string ToString()
         {
@@ -37,20 +51,39 @@ namespace OnlineBooking
 
     public class Account
     {
-        public string AccountName { get; set; }
-        public int Balance { get; set; }
+        public string AccountName { get { return string.Format("Account: {0}kr", Balance); } }
+        private int _balance;
         public int ID { get; set; }
 
-        public Account()
-        { 
-            AccountName = string.Format("Account{0}", ID);
-            Balance = 1000;
-            ID = ID;
+        public int Balance
+        {
+            get { return _balance; }
+        }
+
+        public void Deposit(int amount)
+        {
+            _balance += amount;
+        }
+
+        public void Withdraw(int amount)
+        {
+            _balance -= amount;
+        }
+
+        public Account(int balance)
+        {
+            this._balance = balance;
         }
 
         public override string ToString()
         {
-            return string.Format("Account{0}", ID);
+            return string.Format("Account {0}", ID);
         }
+    }
+
+    class Transaction
+    {
+        public int Date { get; set; }
+        public int Amount { get; set; }
     }
 }
