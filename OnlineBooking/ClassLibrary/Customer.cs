@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OnlineBooking
 {
@@ -35,11 +36,17 @@ namespace OnlineBooking
             return accounts;
         }
 
-        public void CreateAccount(int initialDeposit)
+        public bool CreateAccount(int initialDeposit)
         {
             if (initialDeposit >= 1000)
             {
                 accounts.Add(new Account(initialDeposit));
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Deposit must be 1000kr or more.", "Alert");
+                return false;
             }
         }
 
