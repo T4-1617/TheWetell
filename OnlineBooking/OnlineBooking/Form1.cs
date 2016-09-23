@@ -15,7 +15,6 @@ namespace OnlineBooking
     {
         System.Collections.ArrayList userList;
         System.Collections.ArrayList accountList;
-        int userID = 0;
 
         public Form1()
         {
@@ -24,14 +23,28 @@ namespace OnlineBooking
             userList = new System.Collections.ArrayList();
             accountList = new System.Collections.ArrayList();
 
-            userList.Add(new Customer() { Name = "Alex Bro", ID = 1 });
-            accountList.Add(new Account() { ID = 1 });
-            accountList.Add(new Account() { ID = 1 });
+            userList.Add(new Customer() { Name = "Nikola Tesla", ID = 1 });
             accountList.Add(new Account() { ID = 1 });
             accountList.Add(new Account() { ID = 1 });
             accountList.Add(new Account() { ID = 1 });
 
-            userList.Add(new Customer() { Name = "Urban Suedi", ID = 21 });
+            userList.Add(new Customer() { Name = "Albert Einstien", ID = 2 });
+            accountList.Add(new Account() { ID = 2 });
+            accountList.Add(new Account() { ID = 2 });
+            accountList.Add(new Account() { ID = 2 });
+
+            userList.Add(new Customer() { Name = "Thomas Edison", ID = 3 });
+            accountList.Add(new Account() { ID = 3 });
+            accountList.Add(new Account() { ID = 3 });
+
+            userList.Add(new Customer() { Name = "James Watt", ID = 4 });
+            accountList.Add(new Account() { ID = 4 });
+            accountList.Add(new Account() { ID = 4 });
+            accountList.Add(new Account() { ID = 4 });
+            accountList.Add(new Account() { ID = 4 });
+
+            userList.Add(new Customer() { Name = "Urban Suedi", ID = 5 });
+            accountList.Add(new Account() { ID = 5 });
 
 
             cbxSelectUser.Items.Add(new ComboBoxItem() { Text = "<Select option>", Value = 0 });
@@ -40,12 +53,13 @@ namespace OnlineBooking
 
             cbxSelectUser.SelectedIndex = 0;
 
-            pnlCustomerButtons.Visible = false;
+            GUI();
+            tbxBalance.ReadOnly = true;
         }
 
         private void cbxSelectUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            lbxUserAccounts.Items.Clear();
             switch (cbxSelectUser.Text)
             {
                 case "Customer":
@@ -56,14 +70,6 @@ namespace OnlineBooking
                     break;
                 default:
                     break;
-            }
-            if (cbxSelectUser.Text == "Customer")
-            {
-                pnlCustomerButtons.Visible = true;
-            }
-            else
-            {
-                pnlCustomerButtons.Visible = false;
             }
         }
 
@@ -86,14 +92,55 @@ namespace OnlineBooking
                 {
                     lbxUserAccounts.Items.Add(account);
                 }
-                else
+            }
+        }
+
+        void Involvement()
+        {
+
+        }
+
+        void AddAccounts(int userID)
+        {
+            Customer customer = (Customer)lbxUsers.SelectedItem;
+            accountList.Add(new Account() { ID = customer.ID });
+        }
+
+        void CheckBalance()
+        {
+            Account account = (Account)lbxUserAccounts.SelectedItem;
+            tbxBalance.Text = account.Balance.ToString();
+            pnlBalance.Visible = true;
+        }
+
+        void AddCash()
+        {
+
+        }
+
+        void WithdrawCash()
+        {
+            Account account = (Account)lbxUserAccounts.SelectedItem;
+
+        }
+
+        void GUI()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Panel)
                 {
-                    break;
+                    control.Visible = false;
                 }
             }
         }
 
-        //void 
+        void CustomerGUI(bool visible)
+        {
+            pnlBalance.Visible = visible;
+            pnlAddCash.Visible = visible;
+            pnlWithdrawCash.Visible = visible;
+        }
 
         private void lbxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -103,7 +150,28 @@ namespace OnlineBooking
 
         private void lbxUserAccounts_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbxSelectUser.Text == "Customer" && lbxUserAccounts.SelectedItem is Account)
+            {
+                pnlCustomerButtons.Visible = true;
+            }
+        }
 
+        private void btnBalance_Click(object sender, EventArgs e)
+        {
+            CustomerGUI(false);
+            CheckBalance();
+        }
+
+        private void btnAddCash_Click(object sender, EventArgs e)
+        {
+            CustomerGUI(false);
+            AddCash();
+        }
+
+        private void btnWithdrawCash_Click(object sender, EventArgs e)
+        {
+            CustomerGUI(false);
+            WithdrawCash();
         }
     }
 }
