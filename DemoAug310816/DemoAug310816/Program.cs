@@ -15,9 +15,9 @@ namespace DemoAug310816
             int number2;
 
             Console.WriteLine("Enter a positive number:");
-            number1 = GetValidNum();
+            number1 = Number();
             Console.WriteLine("Enter another positive number:");
-            number2 = GetValidNum();
+            number2 = Number();
             Console.WriteLine("Enter an operator:");
             string ope = Console.ReadLine();
 
@@ -49,7 +49,7 @@ namespace DemoAug310816
             }
         }
 
-        private static int GetValidNum()
+        private static int Number()
         {
             int num;
             bool isnum = int.TryParse(Console.ReadLine(), out num);
@@ -58,7 +58,7 @@ namespace DemoAug310816
                 return num;
             }
             Console.WriteLine("Enter a valid number:");
-            return GetValidNum();
+            return Number();
         }
         
     }
