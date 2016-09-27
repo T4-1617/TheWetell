@@ -14,6 +14,7 @@ namespace OnlineBooking
     public partial class Form1 : Form
     {
         System.Collections.ArrayList _customers;
+        int number;
 
         public Form1()
         {
@@ -30,33 +31,16 @@ namespace OnlineBooking
             c.CreateAccount(10000);
             _customers.Add(c);
 
+            // Combobox items
             cbxSelectUser.Items.Add(new ComboBoxItem() { Text = "<Select option>", Value = 0 });
             cbxSelectUser.Items.Add(new ComboBoxItem() { Text = "Customer", Value = 1 });
             cbxSelectUser.Items.Add(new ComboBoxItem() { Text = "Employee", Value = 2 });
 
+            // Shows the first value in combobox
             cbxSelectUser.SelectedIndex = 0;
 
+            // Hides all panels and buttons
             GUI();
-        }
-
-        private void cbxSelectUser_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GUI();
-            lbxUserAccounts.Items.Clear();
-
-            switch (cbxSelectUser.Text)
-            {
-                case "Customer":
-                    CheckUsers();
-                    break;
-                case "Employee":
-                    CheckUsers();
-                    EmployeeGUI(true);
-                    break;
-                default:
-                    lbxUsers.Items.Clear();
-                    break;
-            }
         }
 
         void CheckUsers()
@@ -121,8 +105,6 @@ namespace OnlineBooking
         {
             Account account = (Account)lbxUserAccounts.SelectedItem;
 
-            int number;
-            number = Convert.ToInt32(tbxAddCash.Text);
             number = int.Parse(tbxAddCash.Text);
 
             account.Deposit(number);
@@ -134,8 +116,6 @@ namespace OnlineBooking
         {
             Account account = (Account)lbxUserAccounts.SelectedItem;
 
-            int number;
-            number = Convert.ToInt32(tbxWithdraw.Text);
             number = int.Parse(tbxWithdraw.Text);
 
             int temp = account.Balance - number;
@@ -156,20 +136,9 @@ namespace OnlineBooking
         {
             Customer customer = (Customer)lbxUsers.SelectedItem;
 
-            int number;
-            number = Convert.ToInt32(tbxAddAccount.Text);
             number = int.Parse(tbxAddAccount.Text);
 
-
-            if (customer.CreateAccount(number))
-            {
-                customer.CreateAccount(number);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return customer.CreateAccount(number);
         }
 
         void Transaction(bool action)
@@ -177,8 +146,6 @@ namespace OnlineBooking
             Transaction transaction = new Transaction() { User = lbxUsers.SelectedItem.ToString(), Date = 270916, };
             if (action)
             {
-                int number;
-                number = Convert.ToInt32(tbxAddCash.Text);
                 number = int.Parse(tbxAddCash.Text);
 
                 transaction.Account = lbxUserAccounts.SelectedItem.ToString();
@@ -189,8 +156,6 @@ namespace OnlineBooking
             }
             else
             {
-                int number;
-                number = Convert.ToInt32(tbxWithdraw.Text);
                 number = int.Parse(tbxWithdraw.Text);
 
                 transaction.Account = lbxUserAccounts.SelectedItem.ToString();
@@ -198,6 +163,26 @@ namespace OnlineBooking
                 transaction.Amount = number;
 
                 lbxTransactions.Items.Add(transaction);
+            }
+        }
+
+        private void cbxSelectUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GUI();
+            lbxUserAccounts.Items.Clear();
+
+            switch (cbxSelectUser.Text)
+            {
+                case "Customer":
+                    CheckUsers();
+                    break;
+                case "Employee":
+                    CheckUsers();
+                    EmployeeGUI(true);
+                    break;
+                default:
+                    lbxUsers.Items.Clear();
+                    break;
             }
         }
 
@@ -209,11 +194,8 @@ namespace OnlineBooking
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
-            Customer customer = (Customer)lbxUsers.SelectedItem;
-
             if (OpenAccount())
             {
-                OpenAccount();
                 GUI();
             }
         }
@@ -226,10 +208,6 @@ namespace OnlineBooking
             if (cbxSelectUser.Text == "Employee")
             {
                 EmployeeGUI(true);
-            }
-            else
-            {
-
             }
 
             CheckAccounts();

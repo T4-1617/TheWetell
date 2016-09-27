@@ -8,10 +8,6 @@ using System.Windows.Forms;
 
 namespace OnlineBooking
 {
-    class Employee
-    {
-
-    }
     public class Customer
     {
         Random r = new Random();
