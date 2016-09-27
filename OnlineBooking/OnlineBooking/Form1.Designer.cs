@@ -56,11 +56,15 @@
             this.btnDeposit = new System.Windows.Forms.Button();
             this.tbxAddCash = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.pnlTransactions = new System.Windows.Forms.Panel();
+            this.lbxTransactions = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.pnlOpenNewAccount.SuspendLayout();
             this.pnlCustomerButtons.SuspendLayout();
             this.pnlBalance.SuspendLayout();
             this.pnlWithdrawCash.SuspendLayout();
             this.pnlAddCash.SuspendLayout();
+            this.pnlTransactions.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -197,6 +201,7 @@
             this.btnInvolement.TabIndex = 8;
             this.btnInvolement.Text = "\rInvolvement";
             this.btnInvolement.UseVisualStyleBackColor = true;
+            this.btnInvolement.Click += new System.EventHandler(this.btnInvolement_Click);
             // 
             // lbxUsers
             // 
@@ -345,11 +350,42 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "Add cash:";
             // 
+            // pnlTransactions
+            // 
+            this.pnlTransactions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTransactions.Controls.Add(this.label9);
+            this.pnlTransactions.Controls.Add(this.lbxTransactions);
+            this.pnlTransactions.Location = new System.Drawing.Point(84, 364);
+            this.pnlTransactions.Name = "pnlTransactions";
+            this.pnlTransactions.Size = new System.Drawing.Size(379, 220);
+            this.pnlTransactions.TabIndex = 4;
+            // 
+            // lbxTransactions
+            // 
+            this.lbxTransactions.Font = new System.Drawing.Font("Arial", 14F);
+            this.lbxTransactions.FormattingEnabled = true;
+            this.lbxTransactions.ItemHeight = 22;
+            this.lbxTransactions.Location = new System.Drawing.Point(25, 49);
+            this.lbxTransactions.Name = "lbxTransactions";
+            this.lbxTransactions.Size = new System.Drawing.Size(331, 136);
+            this.lbxTransactions.TabIndex = 0;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 16F);
+            this.label9.Location = new System.Drawing.Point(25, 15);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(141, 25);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Transactions:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 616);
+            this.ClientSize = new System.Drawing.Size(540, 616);
+            this.Controls.Add(this.pnlTransactions);
             this.Controls.Add(this.pnlOpenNewAccount);
             this.Controls.Add(this.pnlAddCash);
             this.Controls.Add(this.pnlWithdrawCash);
@@ -374,6 +410,8 @@
             this.pnlWithdrawCash.PerformLayout();
             this.pnlAddCash.ResumeLayout(false);
             this.pnlAddCash.PerformLayout();
+            this.pnlTransactions.ResumeLayout(false);
+            this.pnlTransactions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,6 +447,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnWithdraw;
         private System.Windows.Forms.Button btnDeposit;
+        private System.Windows.Forms.Panel pnlTransactions;
+        private System.Windows.Forms.ListBox lbxTransactions;
+        private System.Windows.Forms.Label label9;
     }
 }
 

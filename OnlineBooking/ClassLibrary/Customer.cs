@@ -20,10 +20,12 @@ namespace OnlineBooking
         public int ID { get; set; }
 
         private ArrayList accounts { get; set; }
+        private ArrayList transactions { get; set; }
 
         public Customer()
         {
             accounts = new ArrayList();
+            transactions = new ArrayList();
         }
 
         public Account GetAccount(int accountIndex)
@@ -34,6 +36,11 @@ namespace OnlineBooking
         public ArrayList GetAllAccounts()
         {
             return accounts;
+        }
+
+        public ArrayList GetAllTransactions()
+        {
+            return transactions;
         }
 
         public bool CreateAccount(int initialDeposit)
@@ -88,9 +95,22 @@ namespace OnlineBooking
         }
     }
 
-    class Transaction
+    public class Transaction
     {
         public int Date { get; set; }
         public int Amount { get; set; }
+        public string Action { get; set; }
+        public string Account { get; set; }
+        public string User { get; set; }
+
+        public Transaction()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}: {1} {2} from {3}. {4}",User, Action, Amount, Account, Date);
+        }
     }
 }

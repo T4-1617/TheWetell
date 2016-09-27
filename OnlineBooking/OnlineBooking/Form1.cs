@@ -43,6 +43,7 @@ namespace OnlineBooking
         {
             GUI();
             lbxUserAccounts.Items.Clear();
+
             switch (cbxSelectUser.Text)
             {
                 case "Customer":
@@ -125,6 +126,8 @@ namespace OnlineBooking
             number = int.Parse(tbxAddCash.Text);
 
             account.Deposit(number);
+            Transaction(true);
+            Balance();
         }
 
         void WithdrawCash()
@@ -140,30 +143,61 @@ namespace OnlineBooking
             if (temp > 500)
             {
                 account.Withdraw(number);
+                Transaction(false);
             }
             else
             {
                 MessageBox.Show(string.Format("Can't withdraw {0} from account.", number), "Alert");
             }
+            Balance();
         }
 
         bool OpenAccount()
         {
             Customer customer = (Customer)lbxUsers.SelectedItem;
 
-            int deposit;
-            deposit = Convert.ToInt32(tbxAddAccount.Text);
-            deposit = int.Parse(tbxAddAccount.Text);
+            int number;
+            number = Convert.ToInt32(tbxAddAccount.Text);
+            number = int.Parse(tbxAddAccount.Text);
 
 
-            if (customer.CreateAccount(deposit) == true)
+            if (customer.CreateAccount(number))
             {
-                customer.CreateAccount(deposit);
+                customer.CreateAccount(number);
                 return true;
             }
             else
             {
                 return false;
+            }
+        }
+
+        void Transaction(bool action)
+        {
+            Transaction transaction = new Transaction() { User = lbxUsers.SelectedItem.ToString(), Date = 270916, };
+            if (action)
+            {
+                int number;
+                number = Convert.ToInt32(tbxAddCash.Text);
+                number = int.Parse(tbxAddCash.Text);
+
+                transaction.Account = lbxUserAccounts.SelectedItem.ToString();
+                transaction.Action = "Deposited";
+                transaction.Amount = number;
+
+                lbxTransactions.Items.Add(transaction);
+            }
+            else
+            {
+                int number;
+                number = Convert.ToInt32(tbxWithdraw.Text);
+                number = int.Parse(tbxWithdraw.Text);
+
+                transaction.Account = lbxUserAccounts.SelectedItem.ToString();
+                transaction.Action = "Withdrew";
+                transaction.Amount = number;
+
+                lbxTransactions.Items.Add(transaction);
             }
         }
 
@@ -186,7 +220,18 @@ namespace OnlineBooking
 
         private void lbxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            GUI();
             btnOpenAccount.Visible = true;
+
+            if (cbxSelectUser.Text == "Employee")
+            {
+                EmployeeGUI(true);
+            }
+            else
+            {
+
+            }
+
             CheckAccounts();
         }
 
@@ -231,5 +276,9 @@ namespace OnlineBooking
 
         }
 
+        private void btnInvolement_Click(object sender, EventArgs e)
+        {
+            pnlTransactions.Visible = true;
+        }
     }
 }
