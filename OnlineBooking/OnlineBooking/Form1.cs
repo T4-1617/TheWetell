@@ -43,6 +43,7 @@ namespace OnlineBooking
             GUI();
         }
 
+        // Adds all user to listbox
         void CheckUsers()
         {
             lbxUsers.Items.Clear();
@@ -52,6 +53,7 @@ namespace OnlineBooking
             }
         }
 
+        // Adds all accounts to listbox
         void CheckAccounts()
         {
             lbxUserAccounts.Items.Clear();
@@ -62,6 +64,7 @@ namespace OnlineBooking
             }
         }
 
+        // Hides all the buttons and panels
         void GUI()
         {
             foreach (Control control in this.Controls)
@@ -74,6 +77,7 @@ namespace OnlineBooking
             tbxBalance.ReadOnly = true;
         }
 
+        // GUI for customers only
         void CustomerGUI(bool visible)
         {
             pnlBalance.Visible = visible;
@@ -83,6 +87,7 @@ namespace OnlineBooking
             btnInvolement.Visible = false;
         }
 
+        // GUI for employees only
         void EmployeeGUI(bool visible)
         {
             btnInvolement.Visible = visible;
@@ -93,6 +98,7 @@ namespace OnlineBooking
             pnlWithdrawCash.Visible = false;
         }
 
+        // Method for checking balance of current choosen account
         void Balance()
         {
             Account account = (Account)lbxUserAccounts.SelectedItem;
@@ -101,6 +107,7 @@ namespace OnlineBooking
             pnlBalance.Visible = true;
         }
 
+        // Method to deposit cash into choosen account
         void AddCash()
         {
             Account account = (Account)lbxUserAccounts.SelectedItem;
@@ -112,6 +119,7 @@ namespace OnlineBooking
             Balance();
         }
 
+        //Method to withdraw cash from choosen account
         void WithdrawCash()
         {
             Account account = (Account)lbxUserAccounts.SelectedItem;
@@ -132,6 +140,7 @@ namespace OnlineBooking
             Balance();
         }
 
+        // Opens a new account to selected user
         bool OpenAccount()
         {
             Customer customer = (Customer)lbxUsers.SelectedItem;
@@ -141,6 +150,7 @@ namespace OnlineBooking
             return customer.CreateAccount(number);
         }
 
+        // Method for adding transactions to listbox
         void Transaction(bool action)
         {
             Transaction transaction = new Transaction() { User = lbxUsers.SelectedItem.ToString(), Date = 270916, };

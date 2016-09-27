@@ -53,6 +53,11 @@ namespace OnlineBooking
             }
         }
 
+        //public void CreateTransaction()
+        //{
+
+        //}
+
         public override string ToString()
         {
             return Name;
@@ -65,16 +70,19 @@ namespace OnlineBooking
         private int _balance;
         public int ID { get; set; }
 
+        // Shows balance of account
         public int Balance
         {
             get { return _balance; }
         }
 
+        // Adds cash to account
         public void Deposit(int amount)
         {
             _balance += amount;
         }
 
+        // Withdraws cash from account
         public void Withdraw(int amount)
         {
             _balance -= amount;
@@ -99,6 +107,7 @@ namespace OnlineBooking
         public string Account { get; set; }
         public string User { get; set; }
 
+        // Constructor
         public Transaction()
         {
 
