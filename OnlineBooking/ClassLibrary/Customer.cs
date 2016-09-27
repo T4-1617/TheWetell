@@ -16,12 +16,10 @@ namespace OnlineBooking
         public int ID { get; set; }
 
         private ArrayList accounts { get; set; }
-        private ArrayList transactions { get; set; }
 
         public Customer()
         {
             accounts = new ArrayList();
-            transactions = new ArrayList();
         }
 
         public Account GetAccount(int accountIndex)
@@ -32,11 +30,6 @@ namespace OnlineBooking
         public ArrayList GetAllAccounts()
         {
             return accounts;
-        }
-
-        public ArrayList GetAllTransactions()
-        {
-            return transactions;
         }
 
         public bool CreateAccount(int initialDeposit)
@@ -53,11 +46,6 @@ namespace OnlineBooking
             }
         }
 
-        //public void CreateTransaction()
-        //{
-
-        //}
-
         public override string ToString()
         {
             return Name;
@@ -70,27 +58,37 @@ namespace OnlineBooking
         private int _balance;
         public int ID { get; set; }
 
-        // Shows balance of account
+        private ArrayList transactions { get; set; }
+
+        // Shows balance of an account
         public int Balance
         {
             get { return _balance; }
         }
 
-        // Adds cash to account
+        // Adds cash to an account
         public void Deposit(int amount)
         {
             _balance += amount;
+            transactions.Add(new Transaction() { Amount = amount, Action = "Deposited" });
         }
 
-        // Withdraws cash from account
+        // Withdraws cash from an account
         public void Withdraw(int amount)
         {
             _balance -= amount;
+            transactions.Add(new Transaction() { Amount = amount, Action = "Withdraw" });
         }
 
         public Account(int balance)
         {
             this._balance = balance;
+            transactions = new ArrayList();
+        }
+
+        public ArrayList GetAllTransactions()
+        {
+            return transactions;
         }
 
         public override string ToString()
@@ -101,7 +99,7 @@ namespace OnlineBooking
 
     public class Transaction
     {
-        public int Date { get; set; }
+        public DateTime Date { get ; set; }
         public int Amount { get; set; }
         public string Action { get; set; }
         public string Account { get; set; }
@@ -110,12 +108,13 @@ namespace OnlineBooking
         // Constructor
         public Transaction()
         {
-
+            Date = DateTime.UtcNow;
         }
 
         public override string ToString()
         {
-            return string.Format("{0}: {1} {2} from {3}. {4}",User, Action, Amount, Account, Date);
+            //return string.Format("{0}: {1} {2} from {3}. {4}",User, Action, Amount, Account, Date.ToString("G"));
+            return string.Format("{0}: {1} {2}", Date.ToString("G"), Action, Amount);
         }
     }
 }

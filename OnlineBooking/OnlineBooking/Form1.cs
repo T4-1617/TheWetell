@@ -64,6 +64,20 @@ namespace OnlineBooking
             }
         }
 
+        // Adds all transactions to listbox
+        void CheckTransactions()
+        {
+            lbxTransactions.Items.Clear();
+            Account account = (Account)lbxUserAccounts.SelectedItem;
+
+            foreach (Transaction transaction in account.GetAllTransactions())
+            {
+                transaction.User = lbxUsers.SelectedItem.ToString();
+                transaction.Account = lbxUserAccounts.SelectedItem.ToString();
+                lbxTransactions.Items.Add(transaction);
+            }
+        }
+
         // Hides all the buttons and panels
         void GUI()
         {
@@ -90,7 +104,6 @@ namespace OnlineBooking
         // GUI for employees only
         void EmployeeGUI(bool visible)
         {
-            btnInvolement.Visible = visible;
             btnOpenAccount.Visible = visible;
 
             pnlBalance.Visible = false;
@@ -112,10 +125,10 @@ namespace OnlineBooking
         {
             Account account = (Account)lbxUserAccounts.SelectedItem;
 
+            number = Convert.ToInt32(tbxAddCash.Text);
             number = int.Parse(tbxAddCash.Text);
 
             account.Deposit(number);
-            Transaction(true);
             Balance();
         }
 
@@ -124,6 +137,7 @@ namespace OnlineBooking
         {
             Account account = (Account)lbxUserAccounts.SelectedItem;
 
+            number = Convert.ToInt32(tbxWithdraw.Text);
             number = int.Parse(tbxWithdraw.Text);
 
             int temp = account.Balance - number;
@@ -131,7 +145,6 @@ namespace OnlineBooking
             if (temp > 500)
             {
                 account.Withdraw(number);
-                Transaction(false);
             }
             else
             {
@@ -145,35 +158,10 @@ namespace OnlineBooking
         {
             Customer customer = (Customer)lbxUsers.SelectedItem;
 
+            number = Convert.ToInt32(tbxAddAccount.Text);
             number = int.Parse(tbxAddAccount.Text);
 
             return customer.CreateAccount(number);
-        }
-
-        // Method for adding transactions to listbox
-        void Transaction(bool action)
-        {
-            Transaction transaction = new Transaction() { User = lbxUsers.SelectedItem.ToString(), Date = 270916, };
-            if (action)
-            {
-                number = int.Parse(tbxAddCash.Text);
-
-                transaction.Account = lbxUserAccounts.SelectedItem.ToString();
-                transaction.Action = "Deposited";
-                transaction.Amount = number;
-
-                lbxTransactions.Items.Add(transaction);
-            }
-            else
-            {
-                number = int.Parse(tbxWithdraw.Text);
-
-                transaction.Account = lbxUserAccounts.SelectedItem.ToString();
-                transaction.Action = "Withdrew";
-                transaction.Amount = number;
-
-                lbxTransactions.Items.Add(transaction);
-            }
         }
 
         private void cbxSelectUser_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,10 +213,18 @@ namespace OnlineBooking
 
         private void lbxUserAccounts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxSelectUser.Text == "Customer" && lbxUserAccounts.SelectedItem is Account)
+            if (lbxUserAccounts.SelectedItem is Account)
             {
-                pnlCustomerButtons.Visible = true;
+                if (cbxSelectUser.Text == "Customer")
+                {
+                    pnlCustomerButtons.Visible = true;
+                }
+                else
+                {
+                    btnInvolement.Visible = true;
+                }
             }
+
         }
 
         private void btnBalance_Click(object sender, EventArgs e)
@@ -261,11 +257,11 @@ namespace OnlineBooking
         {
             WithdrawCash();
             tbxWithdraw.Clear();
-
         }
 
         private void btnInvolement_Click(object sender, EventArgs e)
         {
+            CheckTransactions();
             pnlTransactions.Visible = true;
         }
     }

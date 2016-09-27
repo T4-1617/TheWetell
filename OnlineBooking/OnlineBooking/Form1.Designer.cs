@@ -57,8 +57,8 @@
             this.tbxAddCash = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlTransactions = new System.Windows.Forms.Panel();
-            this.lbxTransactions = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.lbxTransactions = new System.Windows.Forms.ListBox();
             this.pnlOpenNewAccount.SuspendLayout();
             this.pnlCustomerButtons.SuspendLayout();
             this.pnlBalance.SuspendLayout();
@@ -360,16 +360,6 @@
             this.pnlTransactions.Size = new System.Drawing.Size(379, 220);
             this.pnlTransactions.TabIndex = 4;
             // 
-            // lbxTransactions
-            // 
-            this.lbxTransactions.Font = new System.Drawing.Font("Arial", 14F);
-            this.lbxTransactions.FormattingEnabled = true;
-            this.lbxTransactions.ItemHeight = 22;
-            this.lbxTransactions.Location = new System.Drawing.Point(25, 49);
-            this.lbxTransactions.Name = "lbxTransactions";
-            this.lbxTransactions.Size = new System.Drawing.Size(331, 136);
-            this.lbxTransactions.TabIndex = 0;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -379,6 +369,16 @@
             this.label9.Size = new System.Drawing.Size(141, 25);
             this.label9.TabIndex = 1;
             this.label9.Text = "Transactions:";
+            // 
+            // lbxTransactions
+            // 
+            this.lbxTransactions.Font = new System.Drawing.Font("Arial", 14F);
+            this.lbxTransactions.FormattingEnabled = true;
+            this.lbxTransactions.ItemHeight = 22;
+            this.lbxTransactions.Location = new System.Drawing.Point(25, 49);
+            this.lbxTransactions.Name = "lbxTransactions";
+            this.lbxTransactions.Size = new System.Drawing.Size(331, 136);
+            this.lbxTransactions.TabIndex = 0;
             // 
             // Form1
             // 
