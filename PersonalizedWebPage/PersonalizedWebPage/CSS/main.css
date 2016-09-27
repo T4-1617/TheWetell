@@ -1,0 +1,86 @@
+﻿body {
+    margin: 0, auto;
+    padding: 0;
+
+    background-color: #009a9a;
+    font-family: 'Trebuchet MS',sans-serif;
+}
+
+a:-webkit-any-link {
+    color: black;
+    text-decoration: none;
+}
+
+#nav-bar {
+    width: 90%;
+    height: 70px;
+    padding: 0;
+    margin: 0 auto;
+    border-radius: 15px;
+
+    border: solid 2px white;
+    background-color: white;
+    position: relative;
+}
+
+    #nav-bar div {
+        float: left;
+        font-size: 25px;
+
+        height: 30px;
+        width: 80px;
+        margin: 10px 20px;
+        padding: 10px;
+
+        text-align: center;
+        vertical-align: middle;
+    }
+
+        #nav-bar div:hover {
+            color: white !important;
+            background-color: #009a9a;
+            border-radius: 5px;
+        }
+
+#extra-header {
+    float: right;
+    font-size: 15px;
+    margin: 30px 22.5px;
+}
+
+    #extra-header b:hover {
+        color: #009a9a;
+        cursor: pointer;
+    }
+
+#content {
+    width: 90%;
+    height: 100%;
+    position: relative;
+}
+
+#name-center {
+    width: 90%;
+    height: 300px;
+    margin: 20px auto;
+
+    font-size: 70px;
+    cursor: default;
+}
+
+    #name-center h1 {
+        margin: -20px 0;
+    }
+
+#lastname b:hover {
+    color: white !important;
+}
+
+#info-box {
+    width: 400px;
+    height: 200px;
+    margin: 10px 80px;
+
+    background-color: aquamarine;
+    border-radius: 15px;
+}
