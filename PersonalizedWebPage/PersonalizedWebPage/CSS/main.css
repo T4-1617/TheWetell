@@ -1,8 +1,7 @@
 ﻿body {
     margin: 0, auto;
     padding: 0;
-
-    background-color: #009a9a;
+    background-color: #16a085;
     font-family: 'Trebuchet MS',sans-serif;
 }
 
@@ -11,14 +10,16 @@ a:-webkit-any-link {
     text-decoration: none;
 }
 
+.info-box {
+}
+
 #nav-bar {
     width: 90%;
     height: 70px;
     padding: 0;
     margin: 0 auto;
     border-radius: 15px;
-
-    border: solid 2px white;
+    border: solid 2px #ecf0f1;
     background-color: white;
     position: relative;
 }
@@ -26,19 +27,17 @@ a:-webkit-any-link {
     #nav-bar div {
         float: left;
         font-size: 25px;
-
         height: 30px;
         width: 80px;
         margin: 10px 20px;
         padding: 10px;
-
         text-align: center;
         vertical-align: middle;
     }
 
         #nav-bar div:hover {
             color: white !important;
-            background-color: #009a9a;
+            background-color: #16a085;
             border-radius: 5px;
         }
 
@@ -49,38 +48,63 @@ a:-webkit-any-link {
 }
 
     #extra-header b:hover {
-        color: #009a9a;
-        cursor: pointer;
+        color: #16a085;
+        cursor: default;
     }
 
 #content {
     width: 90%;
     height: 100%;
     position: relative;
+    margin: auto;
 }
 
 #name-center {
-    width: 90%;
-    height: 300px;
-    margin: 20px auto;
-
+    width: 30%;
+    height: 150px;
+    margin: 150px 50px 0;
     font-size: 70px;
     cursor: default;
+    float: left;
 }
 
     #name-center h1 {
-        margin: -20px 0;
+        transform: rotateZ(20deg);
+        margin: -40px 0;
     }
 
 #lastname b:hover {
     color: white !important;
 }
 
-#info-box {
-    width: 400px;
-    height: 200px;
-    margin: 10px 80px;
-
-    background-color: aquamarine;
+#welcome-box {
+    width: 60%;
+    height: 150px;
+    margin: 50px auto;
+    padding: 10px;
+    background-color: white;
     border-radius: 15px;
+    border: solid 2px #ecf0f1;
+    float: right;
+}
+
+#summary {
+    display: none;
+    width: 500px;
+    height: 200px;
+    margin: 0 50px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 15px;
+    border: solid 2px #ecf0f1;
+    float: left;
+}
+
+#specific {
+    width: 70%;
+    height: auto;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 15px;
+    border: solid 2px #ecf0f1;
 }
