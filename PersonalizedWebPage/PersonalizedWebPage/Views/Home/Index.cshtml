@@ -11,12 +11,13 @@
     <script>
         function toggleState(item) {
             if (item.checked) {
-                document.getElementById('info-box').style.display = "block";
+                document.getElementById('summary').style.display = "block";
             } else {
-                document.getElementById('info-box').style.display = "none";
+                document.getElementById('summary').style.display = "none";
             }
         }
     </script>
+
 </head>
 
 <body>
@@ -55,17 +56,28 @@
                 </label>
             </div>
         </div>
+        <div class="info-box" id="summary">
+            <h2>Felix Wetell</h2>
+            <ul>
+                <li>Name: <b>Felix Wetell</b></li>
+                <li>Status: <b>Student</b></li>
+                <li>Education: <b>T4 - Gymnasieingenjör</b></li>
+                <li>Main language: <b>C#</b></li>
+                <li>Extra abilities: <b>Git, HTML5, CSS3 and Javascript</b></li>
+            </ul>
+        </div>
     </div>
 
-    <div class="info-box" id="summary">
-        <h2>Felix Wetell</h2>
-        <ul>
-            <li>Name: <b>Felix Wetell</b></li>
-            <li>Status: <b>Student</b></li>
-            <li>Education: <b>T4 - Gymnasieingenjör</b></li>
-            <li>Main language: <b>C#</b></li>
-            <li>Extra abilities: <b>Git, HTML5, CSS3 and Javascript</b></li>
-        </ul>
+    <div id="footer">
+
+        <p id="cp-year"></p>
+
+        <script>
+            var d = new Date();
+            var element = document.getElementById("cp-year");
+            element.innerHTML = "Copyright (C) " + d.getFullYear();
+        </script>
+
     </div>
 
 </body>

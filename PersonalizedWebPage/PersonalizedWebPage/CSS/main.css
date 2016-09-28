@@ -1,8 +1,9 @@
 ﻿body {
     margin: 0, auto;
     padding: 0;
-    background-color: #16a085;
+    background-color: #34495e;
     font-family: 'Trebuchet MS',sans-serif;
+    cursor: default;
 }
 
 a:-webkit-any-link {
@@ -11,6 +12,13 @@ a:-webkit-any-link {
 }
 
 .info-box {
+}
+
+.specific-info {
+    width: calc(50% - 21px);
+    height: calc(50% - 21px);
+    padding: 10px;
+    float: left;
 }
 
 #nav-bar {
@@ -37,7 +45,7 @@ a:-webkit-any-link {
 
         #nav-bar div:hover {
             color: white !important;
-            background-color: #16a085;
+            background-color: #d35400;
             border-radius: 5px;
         }
 
@@ -48,13 +56,24 @@ a:-webkit-any-link {
 }
 
     #extra-header b:hover {
-        color: #16a085;
-        cursor: default;
+        color: #d35400;
     }
+
+#footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+    background-color: white;
+    border-top: solid 2px #ecf0f1;
+    text-align: center;
+}
 
 #content {
     width: 90%;
     height: 100%;
+    padding: 20px;
     position: relative;
     margin: auto;
 }
@@ -64,17 +83,17 @@ a:-webkit-any-link {
     height: 150px;
     margin: 150px 50px 0;
     font-size: 70px;
-    cursor: default;
     float: left;
 }
 
     #name-center h1 {
         transform: rotateZ(20deg);
         margin: -40px 0;
+        color: white;
     }
 
 #lastname b:hover {
-    color: white !important;
+    color: #d35400 !important;
 }
 
 #welcome-box {
@@ -100,11 +119,32 @@ a:-webkit-any-link {
     float: left;
 }
 
-#specific {
-    width: 70%;
-    height: auto;
-    margin: 20px auto;
+#info-container {
+    width: calc(100% - 40px);
+    height: 75vh;
+    padding: 20px;
+    margin: 15px auto;
     background-color: white;
     border-radius: 15px;
     border: solid 2px #ecf0f1;
+}
+
+#text {
+    border-right: solid 1px grey;
+    border-bottom: solid 1px grey;
+}
+
+#list {
+    border-left: solid 1px grey;
+    border-bottom: solid 1px grey;
+}
+
+#pictures {
+    border-right: solid 1px grey;
+    border-top: solid 1px grey;
+}
+
+#github {
+    border-left: solid 1px grey;
+    border-top: solid 1px grey;
 }
