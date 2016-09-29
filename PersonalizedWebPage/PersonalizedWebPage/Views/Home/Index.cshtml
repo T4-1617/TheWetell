@@ -6,78 +6,15 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <link href="~/CSS/main.css" rel="stylesheet" type="text/css" />
-    <link href="~/CSS/switch.css" rel="stylesheet" />
-
-    <script>
-        function toggleState(item) {
-            if (item.checked) {
-                document.getElementById('summary').style.display = "block";
-            } else {
-                document.getElementById('summary').style.display = "none";
-            }
-        }
-    </script>
 
 </head>
 
 <body>
-
-    <div id="nav-bar">
-
-        <a href="~/Home/Index">
-            <div><b>Home</b></div>
-        </a>
-
-        <a href="~/Home/About">
-            <div><b>About</b></div>
-        </a>
-
-        <h4 id="extra-header">powered by <b>Mountain Dev.</b></h4>
-    </div>
-
+    @RenderPage("../Shared/nav.cshtml")
+    
     <div id="content">
-
-        <div id="name-center">
-            <h1>Felix</h1>
-            <h1 id="lastname"><b>Wetell</b></h1>
-        </div>
-
-        <div id="welcome-box">
-            <h2>Welcome to my site!</h2>
-            <p>
-                Flip the switch down below to open up a new box that holds a information summary of me..
-            </p>
-
-            <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" !checked onclick="toggleState(this)">
-                <label class="onoffswitch-label" for="myonoffswitch">
-                    <span class="onoffswitch-inner"></span>
-                    <span class="onoffswitch-switch"></span>
-                </label>
-            </div>
-        </div>
-        <div class="info-box" id="summary">
-            <h2>Felix Wetell</h2>
-            <ul>
-                <li>Name: <b>Felix Wetell</b></li>
-                <li>Status: <b>Student</b></li>
-                <li>Education: <b>T4 - Gymnasieingenjör</b></li>
-                <li>Main language: <b>C#</b></li>
-                <li>Extra abilities: <b>Git, HTML5, CSS3 and Javascript</b></li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="footer">
-
-        <p id="cp-year"></p>
-
-        <script>
-            var d = new Date();
-            var element = document.getElementById("cp-year");
-            element.innerHTML = "Copyright (C) " + d.getFullYear();
-        </script>
-
+        <h1><span>FELIX</span></h1>
+        
     </div>
 
 </body>
