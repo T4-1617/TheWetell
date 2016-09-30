@@ -6,15 +6,31 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    @RenderPage("../Shared/links.cshtml")
+    <link href="~/CSS/about.css" rel="stylesheet" />
     <title>Index</title>
-    <link href="~/CSS/main.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body id="about">
 
-    <div id="nav-bar">
+    @RenderPage("../Shared/nav.cshtml")
 
+    <div class="content">
+        <div class="content-text">
+            <h1>About Me</h1>
+            <div class="underline"></div>
+            <p>
+                I´m juuuuuust a regular boooooooy.
+            </p>
+        </div>
+        <div class="content-text">
+            <h1>Skills</h1>
+            <div class="underline"></div>
+            <p>
+                None.
+            </p>
+        </div>
     </div>
 
+    <script src="~/js/nav.js"></script>
 </body>
 </html>
