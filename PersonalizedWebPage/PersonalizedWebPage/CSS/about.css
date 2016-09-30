@@ -1,0 +1,27 @@
+﻿.content-text {
+    padding: 20px;
+}
+
+@media (min-width: 500px) {
+    .content {
+        width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1000px) {
+    .content {
+        width: 1000px;
+    }
+
+    .content-text {
+        width: 460px;
+        float: left;
+    }
+}
+
+.underline {
+    width: 25px;
+    background-color: #27ae60;
+    margin-bottom: 10px;
+}

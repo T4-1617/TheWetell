@@ -9,11 +9,7 @@ body {
     padding: 0;
     font-family: 'Open Sans', sans-serif;
     cursor: default;
-    background: rgb(255,255,255); /* Old browsers */
-    background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background-color: #efefef;
 }
 
 a:-webkit-any-link {
@@ -54,10 +50,14 @@ a:-webkit-any-link {
         width: auto;
     }
 
-#home {
-    background-color: #27ae60;
+.hover-bar, .underline{
+    width: 10px;
+    height: 4px;
+    background-color: #000;
+
+    transition-duration: 0.6s;
 }
 
-#content {
-    
+.hover-bar:hover {
+    width: 25px;
 }
