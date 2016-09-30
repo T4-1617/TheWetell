@@ -9,14 +9,15 @@
     }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1000px) and (min-height: 750px) {
     .content {
-        width: 1000px;
+        margin-right: 50%;
+        bottom: -50%;
+        transform: translate(50%, 50%);
     }
 
     .content-text {
-        width: 460px;
-        float: left;
+        max-width: 460px;
     }
 }
 
@@ -24,4 +25,9 @@
     width: 25px;
     background-color: #27ae60;
     margin-bottom: 10px;
+}
+
+table {
+    font-weight: bold;
+    border-spacing: 10px;
 }
