@@ -1,23 +1,28 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
     @RenderPage("../Shared/links.cshtml")
     <link href="~/CSS/contact.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/font-awesome/css/font-awesome.min.css">
     <title>Index</title>
 </head>
 <body id="contact">
     @RenderPage("../Shared/nav.cshtml")
 
-    <div class="content"> 
+    <div class="content">
         <h1>
             <span>Contact</span>
         </h1>
+        <h3>
+            <span>Phone: <b>+46 8 48 19 97</b></span>
+            <br />
+            <span>E-mail: <b>felix.wetell@gmail.com</b></span>
+        </h3>
+        <div id="link-box">
+            <a href="https://github.com/felixwetell" style="margin-right: 5px;"><i class="fa fa-4x fa-github-square" aria-hidden="true" ></i></a>
+            <a href="https://se.linkedin.com/in/felix-wetell-15a19b94"><i class="fa fa-4x fa-linkedin-square" aria-hidden="true"></i></a>
+        </div>
     </div>
 
     <script src="~/js/nav.js"></script>
