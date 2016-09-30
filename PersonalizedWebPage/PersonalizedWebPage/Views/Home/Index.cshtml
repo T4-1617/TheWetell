@@ -3,20 +3,29 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width" />
+    @RenderPage("../Shared/links.cshtml")
+    <link href="~/CSS/index.css" rel="stylesheet" />
     <title>Index</title>
-    <link href="~/CSS/main.css" rel="stylesheet" type="text/css" />
-
 </head>
 
-<body>
+<body id="home">
     @RenderPage("../Shared/nav.cshtml")
-    
-    <div id="content">
-        <h1><span>FELIX</span></h1>
-        
+
+
+    <div class="content">
+        <h1>
+            <span>FELIX</span>
+            <br />
+            <span>WETELL</span>
+        </h1>
+
+        <h2>
+            <span style="color: #27ae60;">SOFTWARE DEVELOPER</span>
+        </h2>
+        <div class="hover-bar"></div>
     </div>
 
+    <script src="~/js/nav.js"></script>
 </body>
 
 </html>
