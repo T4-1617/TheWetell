@@ -93,6 +93,32 @@
     <Content Include="CSS\contact.css" />
     <Content Include="CSS\index.css" />
     <Content Include="CSS\main.css" />
+    <Content Include="favicons\android-icon-144x144.png" />
+    <Content Include="favicons\android-icon-192x192.png" />
+    <Content Include="favicons\android-icon-36x36.png" />
+    <Content Include="favicons\android-icon-48x48.png" />
+    <Content Include="favicons\android-icon-72x72.png" />
+    <Content Include="favicons\android-icon-96x96.png" />
+    <Content Include="favicons\apple-icon-114x114.png" />
+    <Content Include="favicons\apple-icon-120x120.png" />
+    <Content Include="favicons\apple-icon-144x144.png" />
+    <Content Include="favicons\apple-icon-152x152.png" />
+    <Content Include="favicons\apple-icon-180x180.png" />
+    <Content Include="favicons\apple-icon-57x57.png" />
+    <Content Include="favicons\apple-icon-60x60.png" />
+    <Content Include="favicons\apple-icon-72x72.png" />
+    <Content Include="favicons\apple-icon-76x76.png" />
+    <Content Include="favicons\apple-icon-precomposed.png" />
+    <Content Include="favicons\apple-icon.png" />
+    <Content Include="favicons\browserconfig.xml" />
+    <Content Include="favicons\favicon-16x16.png" />
+    <Content Include="favicons\favicon-32x32.png" />
+    <Content Include="favicons\favicon-96x96.png" />
+    <Content Include="favicons\favicon.ico" />
+    <Content Include="favicons\ms-icon-144x144.png" />
+    <Content Include="favicons\ms-icon-150x150.png" />
+    <Content Include="favicons\ms-icon-310x310.png" />
+    <Content Include="favicons\ms-icon-70x70.png" />
     <Content Include="font-awesome\css\font-awesome.css" />
     <Content Include="font-awesome\css\font-awesome.min.css" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
@@ -148,6 +174,7 @@
     <Content Include="font-awesome\scss\_stacked.scss" />
     <Content Include="font-awesome\scss\_variables.scss" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="favicons\manifest.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
