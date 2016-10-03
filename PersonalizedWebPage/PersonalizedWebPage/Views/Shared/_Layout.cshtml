@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/CSS/main.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/font-awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+
+    @RenderSection("stylesheets", false)
+
+</head>
+<body>
+    <div id="nav-bar">
+        <a href="~/">
+            <div class="nav-bar-item" id="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/NYCS-bull-trans-F.svg/2000px-NYCS-bull-trans-F.svg.png" />
+            </div>
+        </a>
+        <a href="~/">
+            <div class="nav-bar-item" id="nav-home">
+                <div class="item-text">home</div>
+            </div>
+        </a>
+        <a href="~/Home/About">
+            <div class="nav-bar-item" id="nav-about">
+                <div class="item-text">about</div>
+            </div>
+        </a>
+        <a href="~/Home/Contact">
+            <div class="nav-bar-item" id="nav-contact">
+                <div class="item-text">contact</div>
+            </div>
+        </a>
+    </div>
+
+    @RenderBody()
+
+    <script src="~/js/nav.js"></script>
+    <script>
+        document.title = document.getElementById("page-ID").getAttribute("name").toUpperCase() + " - Felix Wetell";
+    </script>
+</body>
+</html>
