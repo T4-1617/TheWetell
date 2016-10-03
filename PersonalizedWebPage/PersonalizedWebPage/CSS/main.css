@@ -28,7 +28,7 @@ a:-webkit-any-link {
         width: 25px;
     }
 
-@media (min-width: 600px) {
+@media (min-width: 528px) {
     .hamburger-menu {
         display: none;
     }
@@ -68,7 +68,7 @@ a:-webkit-any-link {
         }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 527px) {
     #nav-bar {
         display: none;
     }
@@ -93,6 +93,7 @@ a:-webkit-any-link {
                 text-decoration: none;
                 transition: 0.3s;
                 font-size: 17px;
+                text-align: center;
             }
 
                 ul.hamburger-menu li a:hover {
@@ -103,32 +104,41 @@ a:-webkit-any-link {
                 display: none;
             }
 
-    ul.hamburger-menu li:not(:first-child) {
-        display: none;
-    }
-
-    ul.hamburger-menu li.icon {
-        float: right;
-        display: inline-block;
-    }
-
-    ul.hamburger-menu.responsive {
-        position: relative;
-    }
-
-        ul.hamburger-menu.responsive li.icon {
-            position: absolute;
-            right: 0;
-            top: 0;
+        ul.hamburger-menu img {
+            width: 17px;
+            height: auto;
         }
 
-        ul.hamburger-menu.responsive li {
-            float: none;
-            display: inline;
+        ul.hamburger-menu li:not(:first-child) {
+            display: none;
         }
 
-            ul.hamburger-menu.responsive li a {
-                display: block;
-                text-align: left;
+        ul.hamburger-menu li.icon {
+            float: right;
+            display: inline-block;
+        }
+
+        ul.hamburger-menu.responsive {
+            position: relative;
+        }
+
+            ul.hamburger-menu.responsive li.icon {
+                position: absolute;
+                right: 0;
+                top: 0;
             }
+
+            ul.hamburger-menu.responsive li {
+                float: none;
+                display: inline;
+            }
+
+                ul.hamburger-menu.responsive li a {
+                    display: block;
+                    text-align: left;
+                }
+
+    #hamburger-logo:hover {
+        background-color: #333 !important;
+    }
 }
