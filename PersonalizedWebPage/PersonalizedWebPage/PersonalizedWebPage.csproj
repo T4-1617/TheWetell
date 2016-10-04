@@ -176,6 +176,7 @@
     <Content Include="font-awesome\scss\_variables.scss" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="favicons\manifest.json" />
+    <None Include="Properties\PublishProfiles\felixwetell - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -186,6 +187,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

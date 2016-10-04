@@ -120,6 +120,7 @@ a:-webkit-any-link {
 
         ul.hamburger-menu.responsive {
             position: relative;
+            z-index : 1;
         }
 
             ul.hamburger-menu.responsive li.icon {
